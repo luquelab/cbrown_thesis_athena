@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Plots
-nav_order: 5
+nav_order: 2
 parent: Output
 grand_parent: Home
 ---

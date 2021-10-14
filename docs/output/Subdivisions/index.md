@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Subdivisions
-nav_order: 1
+nav_order: 3
 parent: Output
 grand_parent: Home
 ---
