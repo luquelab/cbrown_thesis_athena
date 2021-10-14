@@ -1,6 +1,7 @@
 ---
 layout: default
-title: score_plots
+title: optimal_subdivisions
+nav_order: 1
 ---
 
 # Background

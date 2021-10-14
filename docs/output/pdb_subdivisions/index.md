@@ -1,6 +1,7 @@
 ---
 layout: default
 title: pdb_subdivisions
+nav_order: 2
 ---
 
 # Background
