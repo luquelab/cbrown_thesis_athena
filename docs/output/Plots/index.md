@@ -1,12 +1,12 @@
 ---
 layout: default
 title: Plots
-nav_order: 2
+nav_order: 5
 parent: Output
 grand_parent: Home
 ---
 
-# Background
+# Plots
 
 Introduce the main topic and question.
 
