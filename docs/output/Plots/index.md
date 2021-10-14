@@ -10,5 +10,5 @@ grand_parent: Home
 
 Plot examples for 1a34. (STNV)
 
-![myimg](1a34_12_domains.png){: width="500px" style="float:left; padding-right:10px" }
+![myimg](1a34_12_domains.png)
 

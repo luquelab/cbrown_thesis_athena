@@ -10,4 +10,4 @@ grand_parent: Home
 
 Subdivision example for 1a34. (STNV)
 
-![myimg](1a34_20_domains_optimal.png){: width="500px" style="float:left; padding-right:10px" }
+![myimg](1a34_20_domains_optimal.png)
