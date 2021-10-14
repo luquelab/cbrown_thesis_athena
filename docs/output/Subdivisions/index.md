@@ -3,6 +3,7 @@ layout: default
 title: Subdivisions
 nav_order: 1
 parent: Output
+grand_parent: Home
 ---
 
 # Background

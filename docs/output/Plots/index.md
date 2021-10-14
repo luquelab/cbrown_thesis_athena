@@ -3,6 +3,7 @@ layout: default
 title: Plots
 nav_order: 5
 parent: Output
+grand_parent: Home
 ---
 
 # Background
