@@ -1,14 +1,14 @@
-# Luque Lab project template
+# Quasi-rigid Domain Subdivision of Viral Capsids
 
 ## WHAT
-This repository provides the default structure for projects in the Luque Lab.
+This repository is for the development of a tool that subdivides viral capsids.
 
 ## WHO
-The template was originally concived by Antoni Luque based on recommendations from Noble PLoS Comp Biol 2009, Wilson et al PLoS Comp Biol 2017, and Briney "Data Management for Researchers" (2015), Hunt and Thomas "The Pragmatic Programmer: Your Journey to Mastery" (2019 2nd ed).
+This project is currently worked on solely by Colin Brown.
 
 ## WHEN
 This is an evolving repository
-Started: 2021-05-10
+Started: 2021-05-18
 
 End: ...
 
@@ -19,13 +19,11 @@ FOLDER: /bin
 FOLDER: /data
 --> This folder contains the raw data associated with the project and the potential references.
 
-FOLDER: /docs
+FOLDER: /doc
 --> This folder contains the manuscript, digital copies of the cited references, figures, and other associated files for publication.
 
 FOLDER: /results
 --> This folder contains the results, performance analysis, and commented references associated with the project.
 
 FOLDER: /src
---> This folder contains source code files that require compilation.
-
-The syntax of markdown files (.md) is CommonMark unless specified otherwise (https://commonmark.org/help/)
+--> This folder contains source code files and jupyter notebooks.
