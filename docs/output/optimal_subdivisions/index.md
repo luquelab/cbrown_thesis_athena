@@ -1,6 +1,6 @@
 ---
 layout: default
-title: optimal_subdivisions
+title: Subdivisions
 nav_order: 1
 parent: Output
 ---

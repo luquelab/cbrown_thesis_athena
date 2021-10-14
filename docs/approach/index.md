@@ -2,6 +2,7 @@
 layout: default
 title: Approach
 nav_order: 4
+parent: Home
 ---
 
 # 1. Quasi Rigid Domain Composition Approach

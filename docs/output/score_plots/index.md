@@ -1,6 +1,6 @@
 ---
 layout: default
-title: score_plots
+title: Plots
 nav_order: 3
 parent: Output
 ---

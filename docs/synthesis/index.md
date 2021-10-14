@@ -2,6 +2,7 @@
 layout: default
 title: Synthesis
 nav_order: 2
+parent: Home
 ---
 
 # Synthesis
