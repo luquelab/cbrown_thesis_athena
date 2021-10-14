@@ -9,7 +9,4 @@ grand_parent: Home
 # Subdivisions
 
 Introduce the main topic and question.
-
-Expose the current limitations (state-of-the-art).
-
-Add any additional background to support your approach and clarify that impact that it can have.
+![myimg](1a34_20_domains_optimal.png){: width="200px" style="float:left; padding-right:10px" }

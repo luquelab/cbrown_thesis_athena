@@ -9,7 +9,5 @@ grand_parent: Home
 # Plots
 
 Introduce the main topic and question.
+![myimg](1a34_12_domains.png){: width="200px" style="float:left; padding-right:10px" }
 
-Expose the current limitations (state-of-the-art).
-
-Add any additional background to support your approach and clarify that impact that it can have.
