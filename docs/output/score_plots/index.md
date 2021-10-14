@@ -2,6 +2,7 @@
 layout: default
 title: score_plots
 nav_order: 3
+parent: Output
 ---
 
 # Background

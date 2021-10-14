@@ -2,6 +2,7 @@
 layout: default
 title: optimal_subdivisions
 nav_order: 1
+parent: Output
 ---
 
 # Background
