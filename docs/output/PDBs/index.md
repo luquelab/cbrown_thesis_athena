@@ -1,7 +1,7 @@
 ---
 layout: default
 title: PDBs
-nav_order: 5
+nav_order: 1
 parent: Output
 grand_parent: Home
 ---

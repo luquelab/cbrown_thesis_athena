@@ -1,12 +1,13 @@
 ---
 layout: default
 title: Subdivisions
-nav_order: 5
+nav_order: 3
 parent: Output
 grand_parent: Home
 ---
 
 # Subdivisions
 
-Introduce the main topic and question.
-![myimg](1a34_20_domains_optimal.png){: width="200px" style="float:left; padding-right:10px" }
+Subdivision example for 1a34. (STNV)
+
+![myimg](1a34_20_domains_optimal.png){: width="500px" style="float:left; padding-right:10px" }
