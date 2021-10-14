@@ -1,7 +1,6 @@
 ---
 layout: default
-title: Background
-nav_order: 3
+title: optimal_subdivisions
 ---
 
 # Background

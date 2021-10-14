@@ -2,6 +2,7 @@
 layout: default
 title: Output
 nav_order: 5
+has_children: True
 ---
 
 # Outputs
