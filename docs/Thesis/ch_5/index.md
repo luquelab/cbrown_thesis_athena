@@ -1,11 +1,11 @@
 ---
 layout: default
 title: Discussion & Conclusion
-nav_order: 3
+nav_order: 5
 parent: Thesis
 ---
 
-# Subdivisions
+# Chapter 5: Discussion & Conclusion
 
 Subdivision example for 1a34. (STNV)
 

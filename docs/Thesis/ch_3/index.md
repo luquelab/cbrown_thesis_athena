@@ -5,7 +5,7 @@ nav_order: 3
 parent: Thesis
 ---
 
-# Subdivisions
+# Chapter 3: Coarse Grained Models Of Capsid Geometries
 
 Subdivision example for 1a34. (STNV)
 
