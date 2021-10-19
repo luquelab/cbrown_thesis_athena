@@ -33,6 +33,7 @@ A quasi rigid domain of a protein structure is a domain of the protein which sat
 structure.
 
 ## 4.2 Normal Mode Analysis
+Techniques  
 
 ## 4.3 Elastic Network Models
 
