@@ -2,8 +2,8 @@
 layout: default
 title: Quasi Rigid Domain Decompostion Of Viral Capsids
 nav_order: 3
-parent: Output
-grand_parent: Home
+parent: Thesis
+
 ---
 
 # Subdivisions

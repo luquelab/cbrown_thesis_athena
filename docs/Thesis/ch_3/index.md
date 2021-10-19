@@ -2,8 +2,7 @@
 layout: default
 title: Coarse Grained Models Of Capsid Geometries
 nav_order: 3
-parent: Output
-grand_parent: Home
+parent: Thesis
 ---
 
 # Subdivisions
