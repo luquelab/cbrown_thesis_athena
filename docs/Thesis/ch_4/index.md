@@ -6,7 +6,10 @@ parent: Thesis
 
 ---
 
+
 # Chapter 4: Quasi Rigid Domain Decompostion Of Viral Capsids
+
+![myimg](img.png)
 
 ## 4.1: Augmenting The Classification Scheme
 The ambiguities of the classification scheme described in chapter 2 gives us the opportunity to include additional
