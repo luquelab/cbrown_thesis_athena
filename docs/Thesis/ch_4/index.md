@@ -19,7 +19,7 @@ Here we use the same definition of a quasi rigid domain as described in [ref]
 
 $$
 \begin{equation}
-    E = mc^2 
+    f^{2}_{ij} = Var(d^{2}_{ij}) = \langle d^{2}_{ij} \rangle - \langle d_{ij} \rangle ^{2}
 \end{equation}
 $$
 
