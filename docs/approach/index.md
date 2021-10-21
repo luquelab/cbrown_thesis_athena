@@ -4,8 +4,20 @@ title: Approach
 nav_order: 4
 ---
 
-# Approach
+# 1. Quasi Rigid Domain Composition Approach
 
-Describe here, for example, how data will be obtained, analyzed, and modeled.
+## 1.1 Data Acquisition
 
-Make clear the assumptions and expected uncertainties.
+## 1.2 Coarse Graining
+
+## 1.3 Anisotropic Network Model
+
+## Normal Mode Analysis
+
+## Spectral Clustering
+
+### Spectral Decomposition
+
+### K-Means Clustering
+
+## Interpretation Of Results

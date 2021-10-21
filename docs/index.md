@@ -4,39 +4,51 @@ title: Home
 nav_order: 1
 ---
 
-## Home
+# Home
 
-This is your entry page on the public website associated with your project. State the goal of the project, status, collaborators, and any basic information.
+My name is Colin Brown, an MS student in Physics, and this repository contains a record of my contributions to Luque and
+the ongoing development of my Master's Thesis. I primarily analyze the structural and geometric properties of viral capsids with 
+coarse grained physical models.
 
-The associated file `index.md` contains a YAML front matter to indicate the layout, title, and navigation options. The repo's website is based on Jekyll's theme [Just-the-Docs](https://pmarsceill.github.io/just-the-docs/). Explore their [documentation]([Just-the-Docs](https://pmarsceill.github.io/just-the-docs/)) and associated [GitHub repo](https://github.com/pmarsceill/just-the-docs) to adapt your project's website to your needs.
----
 
-The `head.html` file from the original template has been modified in `/docs/_includes` to include MathJax, so you can write math using latex format. Here are some examples:
+# Ongoing Projects
 
-Math equation using MathJax: $$5+5$$
+## Classifying Viral Capsids via Quasi-Rigid Domain Decomposition
 
-$$
-\begin{align*}
-  & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
-  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
-  & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
-      \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\
-      \vdots & \ddots & \vdots \\
-      \phi(e_n, e_1) & \cdots & \phi(e_n, e_n)
-    \end{array} \right)
-  \left( \begin{array}{c}
-      y_1 \\
-      \vdots \\
-      y_n
-    \end{array} \right)
-\end{align*}
-$$
+![myimg](dd.png)
 
-\( 5+5 \)
+I am developing a tool based on the work in [Ponzoni & Polles 2015](https://www.sciencedirect.com/science/article/pii/S0969212615002270?via%3Dihub)
+that uses Normal Mode Analysis and Elastic Network Models to decompose a protein structure into its quasi-rigid subunits.
+I am applying this tool to capsids and using the results to assist in the classification of capsids using the scheme
+described in [Twarock & Luque(2019)](https://www.nature.com/articles/s41467-019-12367-3).
+The details of this method are included in Chapter 4 of my thesis and the project is located in a 
+[Github Repository.](https://github.com/luquelab/mechanical_subdivision_ProDy)
 
-When $$a \ne 0$$, there are two solutions to $$ax^2 + bx + c = 0$$ and they are
-\begin{equation}
-  x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}
-\end{equation}
+## Catalogue Of Capsid Classifications
 
-May Athena be with you.
+![myimg](fig.png)
+
+I am part of a group effort in Luque Lab to create a catalogue of classifications of Viral Capsids based on their geometry.
+This project is ongoing at this [Github Repository.](https://github.com/luquelab/auto-lattice)
+
+# Completed Projects
+
+## ChimeraX hkcage
+
+![snub](snub.gif)
+
+I developed a tool for the free molecular visualization software [ChimeraX](https://www.rbvi.ucsf.edu/chimerax/). The
+tool was an extension of the 'hkcage' tool already present in ChimeraX to generate Geodesic & Goldberg Polyhedra to a
+set of new geometries described in [Twarock & Luque(2019)](https://www.nature.com/articles/s41467-019-12367-3). This tool
+is now part of the official ChimeraX Toolshed. ([ChimeraX Documentation.](https://www.nature.com/articles/s41467-019-12367-3))
+The tool is also being developed and documented in a [Github Repository.](https://github.com/luquelab/hkcage)
+
+## Coarse Grained Models Of Viral Capsids
+
+![cg](toy_model.png)
+
+I created coarse grained toy models of capsids based on those used in [Zandi & Reguera 2004](https://www.pnas.org/content/101/44/15556)
+for the purpose of comparing standard hexagonal capsid structures with trihexagonal capsid structures.
+
+## 
+

@@ -1,4 +1,4 @@
-title: Project name
+title: Colin Brown's Master's Thesis
 
 ### Theme
 # theme: jekyll-theme-cayman
@@ -6,4 +6,6 @@ remote_theme: pmarsceill/just-the-docs
 
 ### Color scheme supports "light" (default) and "dark"
 color_scheme: light
+
+source: .
 
