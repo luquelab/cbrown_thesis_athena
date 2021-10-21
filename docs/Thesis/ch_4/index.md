@@ -41,7 +41,7 @@ scale dynamics of the capsid, we are interested in the dynamics of the capsid ne
 techniques that are scalable to large capsids.
 The technique we will make use of is Normal Mode Analysis
 
-![Alt Text](https://github.com/luquelab/cbrown_thesis_athena/blob/gh-pages/docs/Thesis/ch_4/1a34.gif)
+![Alt Text](1a34.gif)
 
 
 ## 4.3 Elastic Network Models
