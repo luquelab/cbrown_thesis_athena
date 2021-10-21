@@ -41,8 +41,13 @@ scale dynamics of the capsid, we are interested in the dynamics of the capsid ne
 techniques that are scalable to large capsids.
 The technique we will make use of is Normal Mode Analysis
 
+![Alt Text](https://github.com/luquelab/cbrown_thesis_athena/blob/gh-pages/docs/Thesis/ch_4/1a34.gif)
+
 
 ## 4.3 Elastic Network Models
+Normal Mode Analysis is a model independent technique, and the choice of model is a separate and important decision.
+Among coarse grained models aimed at describing large scale dynamics the most popular options are Elastic Network 
+Models (ENM). 
 
 ## 4.4 Spectral Clustering
 
