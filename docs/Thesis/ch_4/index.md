@@ -33,8 +33,13 @@ A quasi rigid domain of a protein structure is a domain of the protein which sat
 structure.
 
 ## 4.2 Normal Mode Analysis
-Calculating the distance fluctuations between elements of a protein structure is not a simple task and
-there exist many techniques for simplifying the problem while prese
+Calculating the distance fluctuations between elements of a protein structure is not a simple task. The most direct, and
+computationally expensive method would be using molecular dynamics, averaging the fluctuations between elements over the
+trajectories. While accurate and intuitive this method is computationally infeasible with even small capsids containing
+far too many elements. We can examine our requirements to select an alternate method. We are interested in the large
+scale dynamics of the capsid, we are interested in the dynamics of the capsid near equilibrium, and we want to use
+techniques that are scalable to large capsids.
+The technique we will make use of is Normal Mode Analysis
 
 
 ## 4.3 Elastic Network Models
