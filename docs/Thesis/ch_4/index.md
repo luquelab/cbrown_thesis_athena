@@ -33,7 +33,9 @@ A quasi rigid domain of a protein structure is a domain of the protein which sat
 structure.
 
 ## 4.2 Normal Mode Analysis
-Techniques  
+Calculating the distance fluctuations between elements of a protein structure is not a simple task and
+there exist many techniques for simplifying the problem while prese
+
 
 ## 4.3 Elastic Network Models
 
