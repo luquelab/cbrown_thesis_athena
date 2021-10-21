@@ -40,7 +40,6 @@ far too many elements. We can examine our requirements to select an alternate me
 scale dynamics of the capsid, we are interested in the dynamics of the capsid near equilibrium, and we want to use
 techniques that are scalable to large capsids.
 The technique we will make use of is Normal Mode Analysis
-
 ![Alt Text](1a34.gif)
 
 
