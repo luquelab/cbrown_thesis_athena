@@ -3,13 +3,15 @@ layout: default
 title: Quasi Rigid Domain Decompostion Of Viral Capsids
 nav_order: 4
 parent: Thesis
-
+bibliography: test.bib
 ---
 
 
 # Chapter 4: Quasi Rigid Domain Decompostion Of Viral Capsids
 
 ![myimg](img.png)
+
+[@PONZONI20151516]
 
 ## 4.1: Augmenting The Classification Scheme
 The ambiguities of the classification scheme described in chapter 2 gives us the opportunity to include additional
@@ -51,4 +53,5 @@ Models (ENM).
 ## 4.4 Spectral Clustering
 
 ## 4.5 Results
+# References
 
