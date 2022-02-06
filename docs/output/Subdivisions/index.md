@@ -10,4 +10,4 @@ grand_parent: Home
 
 Subdivision example for 1a34. (STNV)
 
-![myimg](1a34_20_domains_optimal.png)
+![myimg](Snapshots/1a34_20_domains_optimal.png)
