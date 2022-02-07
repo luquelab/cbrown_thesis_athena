@@ -5,7 +5,10 @@ nav_order: 5
 has_children: true
 ---
 
-# Outputs
+# Output
+
+This contains the finalized PDB files, plots, snapshots, and presentations I've given to share my results.
+Files are formatted as follows:
 
 ## PDBs
 Files named: '[pdb_id]_[n]_domains.pdb' contain the results of the Domain Subdivision for n domains.
@@ -17,4 +20,11 @@ The n in this case will be that of the highest scoring subdivision.
 
 ## Final Clustering
 Files named: '[pdb_id]_[n]_domains_optimal.png' are snapshots of the highest scoring subdivision of the pdb
-visualized in ChimeraX. An Icosahedral structure is overlaid to indicate the choice of subdivision.
+visualized in ChimeraX. An Icosahedral structure is overlaid to indicate the choice of subdivision. The ChimeraX sessions
+used to create these screenshots are saved under Subdivisions/Sessions with the format: '[pdb_id]_[n]_domains.cxs'
+
+
+# Summary Of HK97 Results
+
+<object data="./Presentations/HK97_Results_02-06-22.pdf" width="1000" height="1000" type='application/pdf'></object>
+
