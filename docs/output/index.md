@@ -26,5 +26,5 @@ used to create these screenshots are saved under Subdivisions/Sessions with the 
 
 # Summary Of HK97 Results
 
-<object data="./Presentations/HK97_Results_02-06-22.pdf" width="1000" height="1000" type='application/pdf'></object>
+<object data="./Presentations/HK97_Results.pdf" width="1000" height="1000" type='application/pdf'></object>
 
