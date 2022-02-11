@@ -26,6 +26,10 @@ remote_theme: pmarsceill/just-the-docs
 # theme: "just-the-docs"
 plugins:
   - jekyll-feed
+  - jekyll-scholar
+
+scholar:
+  style: "apa"
 color_scheme: light
 source: .
 
