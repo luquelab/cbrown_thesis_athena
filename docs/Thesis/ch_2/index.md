@@ -7,4 +7,4 @@ parent: Thesis
 ---
 
 # Chapter 2: Geometry Of Icosahedral Capsids
-![myimg](img.png)
+![myimg](../../introduction/img.png)

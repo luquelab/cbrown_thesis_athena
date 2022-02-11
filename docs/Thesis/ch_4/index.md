@@ -8,7 +8,7 @@ bibliography: test.bib
 ---
 
 
-# Chapter 4: Quasi Rigid Domain Decompostion Of Viral Capsids
+# Chapter 4: Quasi Rigid Domain Decomposition Of Viral Capsids
 
 ![myimg](img.png)
 
