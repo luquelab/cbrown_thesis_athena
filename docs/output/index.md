@@ -19,7 +19,7 @@ Files named: '[pdb_id]_[n]_domains.png' are plots of the scores of each attempte
 The n in this case will be that of the highest scoring subdivision.
 
 ## Final Clustering
-Files named: '[pdb_id]_[n]_domains_optimal.png' are snapshots of the highest scoring subdivision of the pdb
+Files named: '[pdb_id]\_[n]\_domains_optimal.png' are snapshots of the highest scoring subdivision of the pdb
 visualized in ChimeraX. An Icosahedral structure is overlaid to indicate the choice of subdivision. The ChimeraX sessions
 used to create these screenshots are saved under Subdivisions/Sessions with the format: '[pdb_id]_[n]_domains.cxs'
 
