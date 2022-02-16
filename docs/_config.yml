@@ -29,8 +29,9 @@ remote_theme: pmarsceill/just-the-docs
 # theme: "just-the-docs"
 
 
-scholar:
-  style: "apa"
+#scholar:
+#  style: "apa"
+
 color_scheme: light
 source: .
 
