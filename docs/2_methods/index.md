@@ -10,9 +10,8 @@ nav_order: 3
 
 
 ## 2.2 Augmenting The Classification Scheme
-The ambiguities of the classification scheme described in chapter 2 gives us the opportunity to include additional
-assumptions that encode structural properties of the capsid. Here we propose that the classification scheme be 
-augmented with the following assumption.
+The ambiguities of the geometrical method prompts us to include additional assumptions that encode structural properties
+of the capsid. Here we propose that the classification scheme be augmented with the following assumption.
 
 *Assumption: Capsomers correspond to quasi rigid domains of a viral capsid*
 
@@ -30,7 +29,7 @@ $$
 A quasi rigid domain of a protein structure is a domain of the protein which satisfied our definition of a quasi rigid 
 structure.
 
-## 2.3 Quasi-rigid Domain Decomposition
+## 2.3 Quasi-rigid Subunit Identification
 
 ### 2.3.1 Normal Mode Analysis
 Calculating the distance fluctuations between elements of a protein structure is not a simple task. The most direct, and
@@ -68,9 +67,40 @@ Among coarse grained models aimed at describing large scale dynamics the most po
 Models (ENM). 
 
 ### 2.3.3 Spectral Clustering
+Now that we have determined the pairwise distance fluctuations between the residues of the capsid we need to determine
+an optimal subdivision, or clustering, of the system. There exist many algorithms to identify optimal clusterings of
+data. One of the most effective algorithms used when dealing with large, sparsely connected systems is Spectral Clustering.
+This method requires us to first transform our measure of dissimilarity, distance fluctuations, into a measure of similarity.
+
+$$
+\begin{equation}
+    S_{i,j} = e^{-D_{i,j}^2 / 2 \bar{D}^2}
+\end{equation}
+$$
+
+We can use the nature of connectivity in our model to simplify our similarity matrix by setting the similarity of unconnected
+residues to zero. 
+
+Spectral embedding is a technique based on graph theory, and thus requires an input a Laplacian Matrix. We can transform
+our similarity matrix into a Laplacian matrix, specifically the Symmetric Normalized Laplacian, with the following
+identity.
+
+$$
+\begin{equation}
+    L = I - D^{-1/2} S D^{-1/2}
+\end{equation}
+$$
+
+
 
 
 #### Spectral Embedding
+
+
+
+The eigenvectors of this graph now represent a new set of points in a higher dimensional space that can be clustered
+using a simpler method such as the k-means algorithm.
+
 
 #### Clustering Embedded Points
 
