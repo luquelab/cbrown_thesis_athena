@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9175cf85-3039-409f-9a06-c59952e539e4" name="Default Changelist" comment="Testing new deployment method to work with plugins" />
+    <list default="true" id="9175cf85-3039-409f-9a06-c59952e539e4" name="Default Changelist" comment="Testing new deployment method to work with plugins">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/github-actions-demo.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/github-actions-demo.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <list id="e7a00689-f697-4b6a-b2d6-abdd9f12f0e7" name="config" comment="config" />
     <list id="d8daea23-21eb-4a62-b403-5330eb13464b" name="output" comment="gif" />
     <option name="SHOW_DIALOG" value="false" />
@@ -125,13 +128,6 @@
       <workItem from="1647074181775" duration="22000" />
       <workItem from="1647134799881" duration="9381000" />
       <workItem from="1647238917648" duration="547000" />
-    </task>
-    <task id="LOCAL-00031" summary="Modified overall structure of Athena site.">
-      <created>1634610984436</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1634610984436</updated>
     </task>
     <task id="LOCAL-00032" summary="Updating titles and order of thesis chapters.">
       <created>1634611322883</created>
@@ -469,7 +465,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647239126478</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Testing new deployment method to work with plugins">
+      <created>1647241085044</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1647241085044</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

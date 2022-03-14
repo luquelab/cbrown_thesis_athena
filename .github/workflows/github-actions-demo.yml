@@ -15,3 +15,31 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+
+name: Jekyll Deploy
+on:
+    push:
+        branches:
+            - gh-pages
+    schedule:
+        - cron: “0 0 * * *”
+
+jobs:
+	build_and_deploy:
+    	runs-on: ubuntu-latest
+        steps:
+        	- name: GitHub Checkout
+              uses: actions/checkout@v1
+            - name: Bundler Cache
+              uses: actions/cache@v1
+              with:
+              	  path: vendor/bundle
+                  key: ${{ runner.os }}-gems-${{ hashFiles(‘**/Gemfile.lock’) }}
+                  restore-keys: | ${{ runner.os }}-gems-
+            - name: Build & Deploy to GitHub Pages
+              uses: joshlarsen/jekyll4-deploy-sitebranch@gh-pages
+              env:
+               	  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
+                  GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
