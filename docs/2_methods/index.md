@@ -8,7 +8,8 @@ nav_order: 3
 
 ## 2.1 Data Acquisition
 
-All atomic models are acquire in PDB format and are, with few exceptions, acquired from the RCSB Protein Databank.
+All atomic models are acquire in PDB format and are, with few exceptions, acquired from the RCSB Protein Databank. The
+majority of .pdb files for viral capsids contain an asymmetric unit 
 
 
 
