@@ -31,8 +31,8 @@ plugins:
 theme: "just-the-docs"
 
 
-#scholar:
-#  style: "apa"
+scholar:
+  style: "apa"
 
 color_scheme: light
 source: .

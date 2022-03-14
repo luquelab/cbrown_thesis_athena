@@ -9,40 +9,20 @@ nav_order: 3
 ## 2.1 Data Acquisition
 
 All atomic models are acquire in PDB format and are, with few exceptions, acquired from the RCSB Protein Databank. The
-majority of .pdb files for viral capsids contain an asymmetric unit and a set of icosahedral rotations 
+majority of .pdb files for viral capsids contain an asymmetric unit and a set of icosahedral rotations that build the
+full capsid. 
 
 
 
 ![myimg](2e0z_pdb.png)
 
 
-## 2.2 Augmenting The Classification Scheme
-The ambiguities of the geometrical method prompts us to include additional assumptions that encode structural properties
-of the capsid. Here we propose that the classification scheme be augmented with the following assumption.
 
-*Assumption: Capsomers correspond to quasi rigid domains of a viral capsid*
-
-Here we use the same definition of a quasi rigid domain as described in [ref]. A rigid structures is a structure in
-which the distances between elements of the structure are fixed over time and under transformations in space. A quasi-rigid structure
-is thus a structure where the fluctuations between elements of the structure are minimized. We calculate the pairwise
-distance fluctuation of a structure in the following manner.
-
-$$
-\begin{equation}
-    f^{2}_{ij} = Var(d^{2}_{ij}) = \langle d^{2}_{ij} \rangle - \langle d_{ij} \rangle ^{2}
-\end{equation}
-$$
-
-A quasi rigid domain of a protein structure is a domain of the protein which satisfied our definition of a quasi rigid 
-structure.
-
-## 2.3 Quasi-rigid Subunit Identification
-
-### 2.3.1 Elastic Network Models
-Among coarse grained models aimed at describing large scale molucular dynamics the most popular options are Elastic Network 
+## 2.3 Elastic Network Models
+Among coarse grained models aimed at describing large scale molecular dynamics the most popular options are Elastic Network 
 Models (ENM). Most elastic network models begin by coarse graining the system at the residue level by considering only
-the coordinates of the alpha carbon atoms in each residues. These are chosen as representative atoms for each residue, and
-are connected by springs to all other residues within a given cutoff distance.
+the coordinates of the alpha carbon atoms in each residue. These are chosen as representative atoms for each residue, and
+are connected by springs to all other residues within a given cutoff distance. {% cite Eyal2006 %}
 
 The potential of the Anisotropic Network Model takes the following form.
 
@@ -84,7 +64,7 @@ $$
 |:--:| 
 | *Figure 1: A representation of an Elastic Network Model using the example pdb 2e0z.* |
 
-### 2.3.2 Normal Mode Analysis
+## 2.3 Normal Mode Analysis
 
 We are interested in the large scale dynamics of the capsid near equilibrium. This prompts us to make use of a technique
 called Normal Mode Analysis.
@@ -141,13 +121,31 @@ $$
 
 We
 
+$$
+\begin{equation}
+    f^{2}_{ij} = Var(d^{2}_{ij}) = \langle d^{2}_{ij} \rangle - \langle d_{ij} \rangle ^{2}
+\end{equation}
+$$
+
 
 ![myimg](distflucts.png)
 
 
 
 
-### 2.3.3 Spectral Clustering
+## 2.4 Spectral Clustering
+
+*Assumption: Capsomers correspond to quasi rigid domains of a viral capsid*
+
+Here we use the same definition of a quasi rigid domain as described in [ref]. A rigid structures is a structure in
+which the distances between elements of the structure are fixed over time and under transformations in space. A quasi-rigid structure
+is thus a structure where the fluctuations between elements of the structure are minimized. We calculate the pairwise
+distance fluctuation of a structure in the following manner.
+
+
+
+A quasi rigid domain of a protein structure is a domain of the protein which satisfied our definition of a quasi rigid 
+structure.
 
 
 Now that we have determined the pairwise distance fluctuations between the residues of the capsid we need to determine
@@ -177,17 +175,17 @@ $$
 
 
 
-#### Spectral Embedding
+### Spectral Embedding
 
 The eigenvectors of this graph now represent a new set of points in a higher dimensional space that can be clustered
 using a simpler method such as the k-means algorithm.
 
 
-#### Clustering Embedded Points
+### Clustering Embedded Points
 
-### 2.3.4 Scoring & Selection
+## 2.5 Scoring & Selection
 
-## 2.4 Classification & Visualization
+## 2.6 Classification & Visualization
 
 ## Extra
 ### Symmetry Reduction Of Matrices
@@ -258,3 +256,7 @@ $$
     \textbf{H}_{ij,kl} =  I_k \textbf{H}_{ij,0m} I_k^{-1}
 \end{equation}
 $$
+
+# References
+
+{% bibliography %}
