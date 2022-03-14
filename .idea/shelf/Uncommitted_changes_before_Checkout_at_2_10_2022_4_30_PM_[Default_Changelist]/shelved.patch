@@ -1,0 +1,15 @@
+Index: docs/synthesis/index.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>---\r\nlayout: default\r\ntitle: Synthesis\r\nnav_order: 2\r\n---\r\n\r\n# Synthesis\r\n\r\nProvide a synthesis of the project. This would be the equivalent of the abstract for a grant or an article. Keep it short (< 200). Use the space in [Home]({{ site.baseurl }}) to give the significance. Be more technical in the synthesis (with measure).\r\n\r\nInclude a figure that captures the project.\r\n
+===================================================================
+diff --git a/docs/synthesis/index.md b/docs/synthesis/index.md
+--- a/docs/synthesis/index.md	
++++ b/docs/synthesis/index.md	
+@@ -8,4 +8,4 @@
+ 
+ Provide a synthesis of the project. This would be the equivalent of the abstract for a grant or an article. Keep it short (< 200). Use the space in [Home]({{ site.baseurl }}) to give the significance. Be more technical in the synthesis (with measure).
+ 
+-Include a figure that captures the project.
++Include a figure that captures the project.
+\ No newline at end of file

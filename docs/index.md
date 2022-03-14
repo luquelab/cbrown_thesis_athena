@@ -4,9 +4,10 @@ title: Home
 nav_order: 1
 ---
 
-# Home
+# Home (TESTING) TEstin 2.0
 
-My name is Colin Brown, an MS student in Physics, and this repository contains a record of my contributions to Luque and
+My name is Colin Brown, an MS student in Physics at San Diego State University. This page contains a record of my contributions
+to Luque Lab and
 the ongoing development of my Master's Thesis. I primarily analyze the structural and geometric properties of viral capsids with 
 coarse grained physical models.
 

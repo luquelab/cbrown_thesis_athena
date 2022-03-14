@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9175cf85-3039-409f-9a06-c59952e539e4" name="Default Changelist" comment="Testing new deployment method to work with plugins">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/github-actions-demo.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/github-actions-demo.yml" afterDir="false" />
+    </list>
+    <list id="e7a00689-f697-4b6a-b2d6-abdd9f12f0e7" name="config" comment="config" />
+    <list id="d8daea23-21eb-4a62-b403-5330eb13464b" name="output" comment="gif" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="new_structure" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="sitebranch" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="1zCCjzXhJVI5oghRXBzd2LmBWn3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\colin\OneDrive - San Diego State University (SDSU.EDU)\Research\2_CBROWN_THESIS\cbrown_thesis_athena\docs\output\Subdivisions" />
+      <recent name="C:\Users\colin\OneDrive - San Diego State University (SDSU.EDU)\Research\2_CBROWN_THESIS\cbrown_thesis_athena\docs\output\Plots" />
+      <recent name="C:\Users\colin\OneDrive - San Diego State University (SDSU.EDU)\Research\2_CBROWN_THESIS\cbrown_thesis_athena\docs\output\Subdivisions\Sessions" />
+      <recent name="C:\Users\colin\OneDrive - San Diego State University (SDSU.EDU)\Research\2_CBROWN_THESIS\cbrown_thesis_athena\docs\Thesis\references" />
+      <recent name="C:\Users\colin\OneDrive - San Diego State University (SDSU.EDU)\Research\2_CBROWN_THESIS\cbrown_thesis_athena\docs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\colin\OneDrive - San Diego State University (SDSU.EDU)\Research\2_CBROWN_THESIS\cbrown_thesis_athena\docs\_bibliography" />
+      <recent name="C:\Users\colin\OneDrive - San Diego State University (SDSU.EDU)\Research\2_CBROWN_THESIS\cbrown_thesis_athena\docs\output\Subdivisions\Sessions" />
+      <recent name="C:\Users\colin\OneDrive - San Diego State University (SDSU.EDU)\Research\2_CBROWN_THESIS\cbrown_thesis_athena\docs\output\Subdivisions\Snapshots" />
+      <recent name="C:\Users\colin\OneDrive - San Diego State University (SDSU.EDU)\Research\2_CBROWN_THESIS\cbrown_thesis_athena\docs\output\Plots" />
+      <recent name="C:\Users\colin\OneDrive - San Diego State University (SDSU.EDU)\Research\2_CBROWN_THESIS\cbrown_thesis_athena\docs\Thesis\ch_4" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9175cf85-3039-409f-9a06-c59952e539e4" name="Default Changelist" comment="" />
+      <changelist id="e7a00689-f697-4b6a-b2d6-abdd9f12f0e7" name="config" comment="" />
+      <created>1633642822897</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1633642822897</updated>
+      <workItem from="1633642824545" duration="2626000" />
+      <workItem from="1634168347772" duration="920000" />
+      <workItem from="1634234480540" duration="10997000" />
+      <workItem from="1634608882308" duration="19649000" />
+      <workItem from="1635125700808" duration="3107000" />
+      <workItem from="1635638943629" duration="602000" />
+      <workItem from="1635899897033" duration="797000" />
+      <workItem from="1636074647129" duration="598000" />
+      <workItem from="1636094472326" duration="300000" />
+      <workItem from="1637914137194" duration="7497000" />
+      <workItem from="1641795974198" duration="5444000" />
+      <workItem from="1643955195799" duration="1112000" />
+      <workItem from="1644040961402" duration="404000" />
+      <workItem from="1644041527809" duration="8096000" />
+      <workItem from="1644132432961" duration="3002000" />
+      <workItem from="1644209518930" duration="615000" />
+      <workItem from="1644213897685" duration="4230000" />
+      <workItem from="1644271684610" duration="4825000" />
+      <workItem from="1644485661361" duration="1609000" />
+      <workItem from="1644539369284" duration="790000" />
+      <workItem from="1644640693452" duration="1208000" />
+      <workItem from="1644973219076" duration="3462000" />
+      <workItem from="1645138133839" duration="386000" />
+      <workItem from="1645138598559" duration="96000" />
+      <workItem from="1646696766258" duration="15694000" />
+      <workItem from="1646943778927" duration="3286000" />
+      <workItem from="1646975083224" duration="730000" />
+      <workItem from="1646979987021" duration="1192000" />
+      <workItem from="1647070337947" duration="753000" />
+      <workItem from="1647074181775" duration="22000" />
+      <workItem from="1647134799881" duration="9381000" />
+      <workItem from="1647238917648" duration="547000" />
+    </task>
+    <task id="LOCAL-00034" summary="Further tests of math formatting.">
+      <created>1634615552070</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1634615552070</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Added intro image to chapter 4.">
+      <created>1634615764259</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1634615764259</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Working on chapter 4.1.">
+      <created>1634616207004</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1634616207004</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Working on chapter 4.1.">
+      <created>1634618045062</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1634618045062</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Added intro images to each chapter.">
+      <created>1634793249663</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1634793249663</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Adding animation.">
+      <created>1634794167038</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1634794167038</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Testing .gif display.">
+      <created>1634794664280</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1634794664280</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Fixed gif display.">
+      <created>1634794927893</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1634794927893</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Updated my home to include an overview of my projects.">
+      <created>1634797734776</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1634797734776</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Trying to fix missing word?">
+      <created>1635132172837</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1635132172837</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Testing bibliography.">
+      <created>1637915281932</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1637915281932</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Testing equation. NMA section.">
+      <created>1637917337385</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1637917337385</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Adding semi-finalized results">
+      <created>1644042706309</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1644042706309</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Jekyll for local build and adding symmetry explanation.">
+      <created>1644048369354</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1644048369354</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Presentations">
+      <created>1644049039638</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1644049039638</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Testing">
+      <created>1644049480789</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1644049480789</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Deployment issue">
+      <created>1644049735682</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1644049735682</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Full HK97 results missing 4pt2">
+      <created>1644135416013</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1644135416013</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Added results of T7 procapsid.">
+      <created>1644214372494</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1644214372495</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Added missing pdbs and snapshot.">
+      <created>1644218786133</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1644218786133</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Displaying file output">
+      <created>1644221157878</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1644221157878</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Updating presentations. Adding Old presentation.">
+      <created>1644282463873</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1644282463873</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Fixed pdf display">
+      <created>1644291351478</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1644291351478</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Removed unnecessary folder">
+      <created>1644539761761</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1644539761762</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Adjusted directory names and titles">
+      <created>1644541016064</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1644541016064</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Added working apa references with jekyll-scholar">
+      <created>1644543557472</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1644543557472</updated>
+    </task>
+    <task id="LOCAL-00060" summary="config">
+      <created>1644543655807</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1644543655807</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Added references.bib">
+      <created>1644973284272</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1644973284272</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Changing config for online viewing">
+      <created>1644973490387</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1644973490387</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Changing config for online viewing">
+      <created>1644974521467</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1644974521467</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Changing config for online viewing">
+      <created>1644974626253</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1644974626253</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Changing config for online viewing">
+      <created>1644975162653</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1644975162653</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Citation doesn't work on gh-pages unfortunately">
+      <created>1644975420419</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1644975420419</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Updated HK97 results to include 4pt2 encapsulin and sf6">
+      <created>1645145503992</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1645145503992</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Added some methods. UPdated results slides.">
+      <created>1646701644131</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1646701644131</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Final SRS Presentation">
+      <created>1646701705271</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1646701705271</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Final SRS Presentation">
+      <created>1646701759688</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1646701759688</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Methods changes">
+      <created>1646943999385</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1646943999386</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Config changes for github deployment">
+      <created>1646944248020</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1646944248020</updated>
+    </task>
+    <task id="LOCAL-00073" summary="gif">
+      <created>1646944761229</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1646944761229</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Testing new deployment method to work with plugins">
+      <created>1647142633251</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1647142633251</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Testing new deployment method to work with plugins">
+      <created>1647144767527</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1647144767527</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Testing new deployment method to work with plugins">
+      <created>1647145206794</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1647145206794</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Testing new deployment method to work with plugins">
+      <created>1647150938303</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1647150938304</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Testing new deployment method to work with plugins">
+      <created>1647151022079</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1647151022079</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Testing new deployment method to work with plugins">
+      <created>1647239126477</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1647239126478</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Testing new deployment method to work with plugins">
+      <created>1647241085044</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1647241085044</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Testing new deployment method to work with plugins">
+      <created>1647241278697</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1647241278697</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Testing new deployment method to work with plugins">
+      <created>1647241396883</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1647241396883</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="gh-pages" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/docs/cbrown_thesis_athena" />
+    </ignored-roots>
+    <MESSAGE value="Jekyll for local build and adding symmetry explanation." />
+    <MESSAGE value="Presentations" />
+    <MESSAGE value="Testing" />
+    <MESSAGE value="Deployment issue" />
+    <MESSAGE value="Full HK97 results missing 4pt2" />
+    <MESSAGE value="Added results of T7 procapsid." />
+    <MESSAGE value="Added missing pdbs and snapshot." />
+    <MESSAGE value="Displaying file output" />
+    <MESSAGE value="Updating presentations. Adding Old presentation." />
+    <MESSAGE value="Fixed pdf display" />
+    <MESSAGE value="Removed unnecessary folder" />
+    <MESSAGE value="Adjusted directory names and titles" />
+    <MESSAGE value="Added working apa references with jekyll-scholar" />
+    <MESSAGE value="config" />
+    <MESSAGE value="Added references.bib" />
+    <MESSAGE value="Changing config for online viewing" />
+    <MESSAGE value="Citation doesn't work on gh-pages unfortunately" />
+    <MESSAGE value="Updated HK97 results to include 4pt2 encapsulin and sf6" />
+    <MESSAGE value="Added 3j40 results" />
+    <MESSAGE value="Added some methods. UPdated results slides." />
+    <MESSAGE value="Final SRS Presentation" />
+    <MESSAGE value="Methods changes" />
+    <MESSAGE value="Config changes for github deployment" />
+    <MESSAGE value="gif" />
+    <MESSAGE value="Testing new deployment method to work with plugins" />
+    <option name="LAST_COMMIT_MESSAGE" value="Testing new deployment method to work with plugins" />
+  </component>
+</project>
