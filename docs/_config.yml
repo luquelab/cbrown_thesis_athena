@@ -22,7 +22,7 @@ title: Colin Brown's Master's Thesis
 
 plugins:
   - jekyll-feed
-#  - jekyll-scholar
+  - jekyll-scholar
 
 # Build settings
 # remote_theme: pmarsceill/just-the-docs
