@@ -18,6 +18,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
+baseurl: "/cbrown_thesis_athena"
+
 title: Colin Brown's Master's Thesis
 
 plugins:
