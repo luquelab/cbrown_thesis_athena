@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9175cf85-3039-409f-9a06-c59952e539e4" name="Default Changelist" comment="Testing new deployment method to work with plugins">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/github-actions-demo.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/github-actions-demo.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <list id="e7a00689-f697-4b6a-b2d6-abdd9f12f0e7" name="config" comment="config" />
     <list id="d8daea23-21eb-4a62-b403-5330eb13464b" name="output" comment="gif" />
@@ -38,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="sitebranch" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -127,27 +127,6 @@
       <workItem from="1647074181775" duration="22000" />
       <workItem from="1647134799881" duration="9381000" />
       <workItem from="1647238917648" duration="547000" />
-    </task>
-    <task id="LOCAL-00034" summary="Further tests of math formatting.">
-      <created>1634615552070</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1634615552070</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Added intro image to chapter 4.">
-      <created>1634615764259</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1634615764259</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Working on chapter 4.1.">
-      <created>1634616207004</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1634616207004</updated>
     </task>
     <task id="LOCAL-00037" summary="Working on chapter 4.1.">
       <created>1634618045062</created>
@@ -471,7 +450,28 @@
       <option name="project" value="LOCAL" />
       <updated>1647241396883</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="Testing new deployment method to work with plugins">
+      <created>1647241449968</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1647241449968</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Testing new deployment method to work with plugins">
+      <created>1647241815371</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1647241815371</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Testing new deployment method to work with plugins">
+      <created>1647242567746</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1647242567746</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
