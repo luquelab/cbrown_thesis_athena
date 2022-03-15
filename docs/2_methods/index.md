@@ -25,9 +25,9 @@ full capsid.
 ## 2.2 The Anisotropic Network Model
 
 Elastic Network Models (ENMs) are among the most popular models for describing large scale protein dynamics. They represent
-proteins as a network of masses and springs, and thus require very few parameters to fully describe the system. They are
-also able to be coarse grained to any level depending on computational needs. We select the Anisotropic Network Model(ANM),
-the most commonly used ENM for its ability to describe protein conformational changes in three dimensions.{% cite Bahar2010 %} 
+proteins as a network of masses and springs in an equilibrium state. They require very few parameters to fully describe the system, and are
+also able to be coarse grained to any level depending on computational needs. We select the Anisotropic Network Model (ANM),
+the most commonly used ENM, for its ability to describe protein conformational changes in three dimensions.{% cite Bahar2010 %} 
 We construct our model by coarse-graining to the level of protein residues, selecting the carbon alpha atoms as the representative
 coordinates of each residue, and connect them to other residues within a cutoff distance.
 
@@ -44,7 +44,9 @@ $$
 \end{equation}
 $$
 
-Here $$\Gamma$$ is our spring connectivity matrix as determined using our cutoff distance and choice of spring constant.  {% cite Eyal2006 %}
+Where $$\vec{x}_i$$ is the coordinate vector of residue i and $$\vec{x}_i^0$$ is the equilibrium coordinate vector for that residue.
+$$\Gamma$$ is our inter-residue connectivity matrix, with each entry determined using our cutoff distance and choice of spring constant.  {% cite Eyal2006 %}
+The connectivity matrix on its own represents the topology of our system, similar to a connected graph.
 
 $$
 \begin{equation}
@@ -56,7 +58,8 @@ $$
 \end{equation}
 $$
 
-To simplify the model we set the spring constant to 1 for all residues. Our cutoff distance is set to $$10Å$$.
+To simplify the model we set the spring constant to 1 for all residues. Our cutoff distance is set to $$18Å$$, which yields
+the best agreement between residue square fluctuations and experimental b-factors.
 
 
 
