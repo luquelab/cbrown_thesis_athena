@@ -20,14 +20,16 @@ full capsid.
 
 
 
-## 2.2 Elastic Network Models
+## 2.2 The Anisotropic Network Model
 
-Among coarse grained models aimed at describing large scale molecular dynamics the most popular options are Elastic Network 
-Models (ENM). Most elastic network models begin by coarse graining the system at the residue level by considering only
-the coordinates of the alpha carbon atoms in each residue. These are chosen as representative atoms for each residue, and
-are connected by springs to all other residues within a given cutoff distance. {% cite Eyal2006 %}
+Elastic Network Models (ENMs) are among the most popular models for describing large scale protein dynamics. They require very
+few parameters, in our model only the cutoff distance and spring constant. They are also able to be coarse grained to any
+level, most often to the level of individual protein residues. We select the Anisotropic Network Model(ANM), the most commonly
+used ENM for its ability to describe protein conformational changes in three dimensions.  {% cite Bahar2010 %} 
 
-The potential of the Anisotropic Network Model takes the following form.
+
+
+The overall potential of the system is thus the sum of all the harmonic potentials between each residue. {% cite Bahar2010 %}
 
 $$
 \begin{equation}
@@ -35,7 +37,7 @@ $$
 \end{equation}
 $$
 
-where $\Gamma$ is our spring connectivity matrix defined as follows.
+where $\Gamma$ is our spring connectivity matrix defined as follows.  {% cite Eyal2006 %}
 
 $$
 \begin{equation}
@@ -52,7 +54,6 @@ $$
     \mathbf{H}_{ij} = \frac{\textbf{$\Gamma$}_{ij}}{R_{ij}^2} \vec{r}_{ij} \otimes \vec{r}_{ij}
 \end{equation}
 $$
-
 The diagonal blocks of our Hessian Matrix are also 3x3 matrices.
 
 $$
