@@ -2,7 +2,7 @@
 layout: default
 title: Methods
 nav_order: 3
-usemathjax: true
+math: mathjax3
 ---
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
