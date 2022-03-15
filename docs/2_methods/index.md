@@ -172,9 +172,10 @@ fluctuations in distance between residues using the following identity.
 
 $$
 \begin{equation}
-    \mathbf{f}_{ij}^2 = \mathbf{C}_{ii} + \mathbf{C}_{jj} - 2 \mathbf{C}_{ij}
+    f_{ij}^2 = Var(R^{2}_{ij})  = \mathbf{C}_{ii} + \mathbf{C}_{jj} - 2 \mathbf{C}_{ij}
 \end{equation}
 $$
+
 
 The Hessian matrix is, however, singular and cannot be exactly inverted, having exactly 6 zero eigenvalues. We can instead
 construct a pseudo-inverse from the eigenvectors/normal modes.
@@ -196,11 +197,7 @@ modes will be necessary to accurately predict correlations and distance fluctuat
 
 ## 2.4 Spectral Clustering
 
-$$
-\begin{equation}
-    f^{2}_{ij} = Var(d^{2}_{ij}) = \langle d^{2}_{ij} \rangle - \langle d_{ij} \rangle ^{2}
-\end{equation}
-$$
+
 
 *Assumption: Capsomers correspond to quasi rigid domains of a viral capsid*
 
