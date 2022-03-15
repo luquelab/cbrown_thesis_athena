@@ -148,9 +148,11 @@ the trace of each 3x3 submatrix.
 
 $$
 \begin{equation}
-    \mathbf{C}_{ij} = \langle \Delta \mathbf{R}_i \Delta \mathbf{R}_j \rangle = tr(\mathbf{H}^{-1}_{ij})
+    \mathbf{C}_{ij} = \langle \Delta \mathbf{R}_i \Delta \mathbf{R}_j \rangle = k_b T tr(\mathbf{H}^{-1}_{ij})
 \end{equation}
 $$
+
+
 
 The Hessian matrix is, however, singular and cannot be exactly inverted, having 6 zero eigenvalues. We instead construct
 a pseudo-inverse from the eigenvectors/normal modes we calculated.
