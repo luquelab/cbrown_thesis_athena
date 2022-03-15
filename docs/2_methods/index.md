@@ -201,9 +201,9 @@ residues to zero.
 
 ### Spectral Graph Embedding
 
-Spectral embedding is a technique based on graph theory, and thus requires as an input a Laplacian Matrix. We can transform
-our similarity matrix into a Laplacian matrix, specifically the Symmetric Normalized Laplacian, with the following
-identity.
+Spectral embedding is a technique based on graph theory, and requires as an input a Laplacian Matrix representing a graph.
+We can transform a similarity matrix into a Laplacian matrix, specifically the Symmetric Normalized Laplacian, with the 
+following identity.
 
 $$
 \begin{equation}
@@ -212,18 +212,24 @@ $$
 $$
 
 
-
-
-
-The eigenvectors of this graph now represent a new set of points in a higher dimensional space that can be clustered
-using one of many methods. We choose a 
-
-
 ### Clustering Embedded Points
+
+The eigenvectors of this graph now represent a set of points in a higher dimensional space that can be clustered
+using one of many methods. We choose a 
 
 ## 2.5 Scoring & Selection
 
+Since our methods take the number of clusters as input, we need to compare results across different numbers of clusters
+and select the optimal clustering. We
+
 ## 2.6 Classification & Visualization
+
+The labels assigned to each residue allow us to visualize the results of the clustering in ChimeraX. We color each residue
+based on its cluster label and then overlay a 3d structure with a lattice that fits the clustering most accurately.
+
+| ![myimg](2e0z_subdivision.png) |
+|:--:| 
+| *Figure 5: The results of visualizing Pyrococcus Furiosus VLP* |
 
 
 # References
