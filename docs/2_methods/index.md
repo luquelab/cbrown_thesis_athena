@@ -122,7 +122,9 @@ $$
 \end{equation}
 $$
 
-The Hessian of our ANM takes the following form.
+The Hessian of our ANM can be derived from our potential in Eq. (1). Because ANM uses three dimensional coordinates the
+Hessian is a $$3Nx3N$$ blovk matrix that consists of $$NxN$$ blocks for each residue interaction. The off-diagonal blocks
+have the following form.
 
 $$
 \begin{equation}
@@ -130,7 +132,9 @@ $$
 \end{equation}
 $$
 
-The diagonal blocks of our Hessian Matrix are also 3x3 matrices.
+Where $$\vec{r}_{ij}$$ is the distance vector between residues, $$R_{ij}^2$$ is the distance between residues, and
+$$\otimes$$ denotes the outer product of two vectors yielding a $$3 x 3$$ block.
+The diagonal blocks of our Hessian Matrix are the sum of all other blocks in that row.
 
 $$
 \begin{equation}
@@ -222,6 +226,10 @@ using one of many methods. We choose a
 Since our methods take the number of clusters as input, we need to compare results across different numbers of clusters
 and select the optimal clustering. We
 
+| ![myimg](2e0z_32_domains.png) |
+|:--:| 
+| *Figure 5: Comparative plots for Pyrococcus Furiosus VLP* |
+
 ## 2.6 Classification & Visualization
 
 The labels assigned to each residue allow us to visualize the results of the clustering in ChimeraX. We color each residue
@@ -229,9 +237,9 @@ based on its cluster label and then overlay a 3d structure with a lattice that f
 
 | ![myimg](2e0z_subdivision.png) |
 |:--:| 
-| *Figure 5: The results of visualizing Pyrococcus Furiosus VLP* |
+| *Figure 6: The results of visualizing Pyrococcus Furiosus VLP* |
 
 
 # References
 
-{% bibliography %}
+{% bibliography --cited %}

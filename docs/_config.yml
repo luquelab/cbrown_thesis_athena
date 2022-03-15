@@ -34,7 +34,7 @@ markdown: kramdown
 
 
 scholar:
-  style: "apa"
+  style: "ieee"
 
 color_scheme: light
 source: .
