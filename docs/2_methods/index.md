@@ -22,14 +22,19 @@ full capsid.
 
 ## 2.2 The Anisotropic Network Model
 
-Elastic Network Models (ENMs) are among the most popular models for describing large scale protein dynamics. They require very
-few parameters, in our model only the cutoff distance and spring constant. They are also able to be coarse grained to any
-level, most often to the level of individual protein residues. We select the Anisotropic Network Model(ANM), the most commonly
-used ENM for its ability to describe protein conformational changes in three dimensions.  {% cite Bahar2010 %} 
+Elastic Network Models (ENMs) are among the most popular models for describing large scale protein dynamics. They represent
+proteins as a network of masses and springs, and thus require very few parameters to fully describe the system. They are
+also able to be coarse grained to any level depending on computational needs. We select the Anisotropic Network Model(ANM),
+the most commonly used ENM for its ability to describe protein conformational changes in three dimensions.{% cite Bahar2010 %} 
+We construct our model by coarse-graining to the level of protein residues, selecting the carbon alpha atoms as the representative
+coordinates of each residue, and connect them to other residues within a cutoff distance.
 
+| ![](2e0z_enm.png) |
+|:--:| 
+| *Figure 1: A representation of an Elastic Network Model using the example pdb 2e0z.* |
 
-
-The overall potential of the system is thus the sum of all the harmonic potentials between each residue. {% cite Bahar2010 %}
+The overall potential of the system is thus the sum of harmonic potentials between each residue. The summation is performed
+only over connected residues determined by a spring connectivity matrix.
 
 $$
 \begin{equation}
@@ -37,7 +42,7 @@ $$
 \end{equation}
 $$
 
-where $\Gamma$ is our spring connectivity matrix defined as follows.  {% cite Eyal2006 %}
+Here $$\Gamma$$ is our spring connectivity matrix as determined using our cutoff distance and choice of spring constant.  {% cite Eyal2006 %}
 
 $$
 \begin{equation}
@@ -49,23 +54,10 @@ $$
 \end{equation}
 $$
 
-$$
-\begin{equation}
-    \mathbf{H}_{ij} = \frac{\textbf{$\Gamma$}_{ij}}{R_{ij}^2} \vec{r}_{ij} \otimes \vec{r}_{ij}
-\end{equation}
-$$
-The diagonal blocks of our Hessian Matrix are also 3x3 matrices.
-
-$$
-\begin{equation}
-    \mathbf{H}_{ii} = - \sum_{i|i \neq j} \mathbf{H}_{ij}
-\end{equation}
-$$
+To simplify the model we set the spring constant to 1 for all residues. Our cutoff distance is set to $$10Å$$.
 
 
-| ![](2e0z_enm.png) |
-|:--:| 
-| *Figure 1: A representation of an Elastic Network Model using the example pdb 2e0z.* |
+
 
 ## 2.3 Normal Mode Analysis
 
@@ -122,13 +114,23 @@ $$
 \end{equation}
 $$
 
-We
+The Hessian of our ANM takes the following form.
 
 $$
 \begin{equation}
-    f^{2}_{ij} = Var(d^{2}_{ij}) = \langle d^{2}_{ij} \rangle - \langle d_{ij} \rangle ^{2}
+    \mathbf{H}_{ij} = \frac{\textbf{$\Gamma$}_{ij}}{R_{ij}^2} \vec{r}_{ij} \otimes \vec{r}_{ij}
 \end{equation}
 $$
+
+The diagonal blocks of our Hessian Matrix are also 3x3 matrices.
+
+$$
+\begin{equation}
+    \mathbf{H}_{ii} = - \sum_{i|i \neq j} \mathbf{H}_{ij}
+\end{equation}
+$$
+
+We are interested in determining the 
 
 
 ![myimg](distflucts.png)
@@ -137,6 +139,12 @@ $$
 
 
 ## 2.4 Spectral Clustering
+
+$$
+\begin{equation}
+    f^{2}_{ij} = Var(d^{2}_{ij}) = \langle d^{2}_{ij} \rangle - \langle d_{ij} \rangle ^{2}
+\end{equation}
+$$
 
 *Assumption: Capsomers correspond to quasi rigid domains of a viral capsid*
 
