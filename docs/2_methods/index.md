@@ -17,8 +17,9 @@ full capsid.
 
 
 
-![myimg](2e0z_pdb.png)
-
+| ![myimg](2e0z_pdb.png) |
+|:--:| 
+| *Figure 1: The PDB file 2e0z visualized in ChimeraX* |
 
 
 ## 2.2 The Anisotropic Network Model
@@ -32,7 +33,7 @@ coordinates of each residue, and connect them to other residues within a cutoff 
 
 | ![](2e0z_enm.png) |
 |:--:| 
-| *Figure 1: A representation of an Elastic Network Model using the example pdb 2e0z.* |
+| *Figure 2: A representation of an Elastic Network Model using the example pdb 2e0z.* |
 
 The overall potential of the system is thus the sum of harmonic potentials between each residue. The summation is performed
 only over connected residues determined by a spring connectivity matrix.
@@ -65,7 +66,9 @@ To simplify the model we set the spring constant to 1 for all residues. Our cuto
 We are interested in the large scale dynamics of the capsid near equilibrium. This prompts us to make use of a technique
 called Normal Mode Analysis.
 
-![Alt Text](2e0z_mode.gif)
+|![Alt Text](2e0z_mode.gif)|
+|:--:| 
+| *Figure 3: An animation showing vibration along one of the normal modes* |
 
 Normal Mode Analysis is a technique aimed towards describing the equilibrium dynamics of a physical system. It aims to
 approximate the way the system fluctuates around the equilibrium by assuming oscillatory behavior and considering only
@@ -146,13 +149,14 @@ a pseudo-inverse from the eigenvectors/normal modes we calculated.
 
 $$
 \begin{equation}
-    \mathbf{H}^{-1} = \sum_{i=1}
+    \mathbf{H}^{-1} = \sum_{k=1}^{3N - 6} \frac{1}{\omega_k^2} \vec{v_k} \otimes \vec{v_k}
 \end{equation}
 $$
 
 
-![myimg](distflucts.png)
-
+| ![myimg](distflucts.png) |
+|:--:| 
+| *Figure 4: A matrix of pairwise distance fluctuations* |
 
 
 
