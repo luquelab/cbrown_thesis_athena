@@ -66,7 +66,7 @@ To simplify the model we set the spring constant to 1 for all residues. Our cuto
 We are interested in the large scale dynamics of the capsid near equilibrium. This prompts us to make use of a technique
 called Normal Mode Analysis.
 
-|![Alt Text](2e0z_mode.gif)|
+|![Alt Text](Test.gif)|
 |:--:| 
 | *Figure 3: An animation showing vibration along one of the normal modes* |
 
