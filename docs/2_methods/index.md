@@ -70,8 +70,8 @@ called Normal Mode Analysis.
 |:--:| 
 | *Figure 3: An animation showing vibration along one of the normal modes* |
 
-Normal Mode Analysis is a technique aimed towards describing the equilibrium dynamics of a physical system. It aims to
-approximate the way the system fluctuates around the equilibrium by assuming oscillatory behavior and considering only
+Normal Mode Analysis is a technique for describing the near equilibrium dynamics of a physical system. It aims to
+approximate vibrations around the equilibrium by assuming harmonic potentials and considering only
 a subset of the normal modes of the system. The assumptions necessary to allow this technique are that the system has a 
 specific equilibrium configuration and that all particles in the system interact under a simple harmonic potential. This
 assumption is taken to be accurate only locally. The further the system strays from the equilibrium the less accurate this
@@ -170,7 +170,7 @@ $$
 
 *Assumption: Capsomers correspond to quasi rigid domains of a viral capsid*
 
-Here we use the same definition of a quasi rigid domain as described in [ref]. A rigid structures is a structure in
+Here we use the same definition of a quasi rigid domain as described in {% cite Ponzoni2015 %}. A rigid structures is a structure in
 which the distances between elements of the structure are fixed over time and under transformations in space. A quasi-rigid structure
 is thus a structure where the fluctuations between elements of the structure are minimized. We calculate the pairwise
 distance fluctuation of a structure in the following manner.

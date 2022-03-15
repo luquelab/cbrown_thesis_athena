@@ -1,7 +1,8 @@
 ---
 layout: default
-title: Methods
+title: Appendix
 nav_order: 7
+math: mathjax3
 ---
 
 # Appendix
