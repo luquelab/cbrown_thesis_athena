@@ -13,7 +13,8 @@ math: mathjax3
 
 All atomic models are acquired in PDB format and are, with few exceptions, from the RCSB Protein Databank. The
 majority of .pdb files for viral capsids contain an asymmetric unit and a set of icosahedral rotations that build the
-full capsid. 
+full capsid. {%cite PDB101 %} These models are built by fitting folded proteins into density distributions measured using X-Ray Crystallography
+or Cryo-electron Microscopy. 
 
 
 
@@ -198,6 +199,8 @@ $$
 We can use the nature of connectivity in our model to simplify our similarity matrix by setting the similarity of unconnected
 residues to zero. 
 
+### Spectral Graph Embedding
+
 Spectral embedding is a technique based on graph theory, and thus requires as an input a Laplacian Matrix. We can transform
 our similarity matrix into a Laplacian matrix, specifically the Symmetric Normalized Laplacian, with the following
 identity.
@@ -211,10 +214,9 @@ $$
 
 
 
-### Spectral Embedding
 
 The eigenvectors of this graph now represent a new set of points in a higher dimensional space that can be clustered
-using a simpler method such as the k-means algorithm.
+using one of many methods. We choose a 
 
 
 ### Clustering Embedded Points
