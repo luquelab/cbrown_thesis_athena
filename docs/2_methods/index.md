@@ -20,24 +20,36 @@ or Cryo-electron Microscopy.
 
 | ![myimg](2e0z_pdb.png) |
 |:--:| 
-| *Figure 1: The PDB file 2e0z visualized in ChimeraX* |
+| *Figure 1: Pyrococcus Furiosus VLP visualized in ChimeraX using pdb id 2e0z.* |
 
 
 ## 2.2 The Anisotropic Network Model
 
 Elastic Network Models (ENMs) are among the most popular models for describing large scale protein dynamics. They represent
 proteins as a network of masses and springs in an equilibrium state. They require very few parameters to fully describe the system, and are
-also able to be coarse grained to any level depending on computational needs. We select the Anisotropic Network Model (ANM),
-the most commonly used ENM, for its ability to describe protein conformational changes in three dimensions.{% cite Bahar2010 %} 
+easily coarse-grained to any level depending on computational needs. We select the Anisotropic Network Model (ANM),
+the most commonly used ENM and the simplest in its formulation.{% cite Bahar2010 %} 
+
 We construct our model by coarse-graining to the level of protein residues, selecting the carbon alpha atoms as the representative
-coordinates of each residue, and connect them to other residues within a cutoff distance.
+coordinates of each residue. This has been shown to be sufficient for describing global dynamics of a protein, being able to match
+residue fluctuations to experimental b-factors. Rather than connect all residues, only residues within a cutoff distance
+of each other are connected with springs. We use a connectivity matrix to represent this structure.
+
+$$
+\begin{equation}
+    \Gamma_{ij} = \biggr \{
+    \begin{array}{ll}
+      \gamma, & R_{ij} \leq r_c \\
+      0, & R_{ij} > r_c
+    \end{array} 
+\end{equation}
+$$
 
 | ![](2e0z_enm.png) |
 |:--:| 
-| *Figure 2: A representation of an Elastic Network Model using the example pdb 2e0z.* |
+| *Figure 2: A representation of an Elastic Network Model using the example of PDB 2e0z.* |
 
-The overall potential of the system is thus the sum of harmonic potentials between each residue. The summation is performed
-only over connected residues determined by a spring connectivity matrix.
+The overall potential of the system is thus the sum of harmonic potentials between each residue.
 
 $$
 \begin{equation}
@@ -49,15 +61,7 @@ Where $$\vec{x}_i$$ is the coordinate vector of residue i and $$\vec{x}_i^0$$ is
 $$\Gamma$$ is our inter-residue connectivity matrix, with each entry determined using our cutoff distance and choice of spring constant.  {% cite Eyal2006 %}
 The connectivity matrix on its own represents the topology of our system, similar to a connected graph.
 
-$$
-\begin{equation}
-    \Gamma_{ij} = \biggr \{
-    \begin{array}{ll}
-      \gamma, & R_{ij} \leq r_c \\
-      0, & R_{ij} > r_c
-    \end{array} 
-\end{equation}
-$$
+
 
 To simplify the model we set the spring constant to 1 for all residues. Our cutoff distance is set to $$18Å$$, which yields
 the best agreement between residue square fluctuations and experimental b-factors.
@@ -70,9 +74,7 @@ the best agreement between residue square fluctuations and experimental b-factor
 We are interested in the large scale dynamics of the capsid near equilibrium. This prompts us to make use of a technique
 called Normal Mode Analysis.
 
-|![Alt Text](Test.gif)|
-|:--:| 
-| *Figure 3: An animation showing vibration along one of the normal modes* |
+
 
 Normal Mode Analysis is a technique for describing the near equilibrium dynamics of a physical system. It aims to
 approximate vibrations around the equilibrium by assuming harmonic potentials and considering only
@@ -122,8 +124,15 @@ $$
 \end{equation}
 $$
 
-The Hessian of our ANM can be derived from our potential in Eq. (1). Because ANM uses three dimensional coordinates the
-Hessian is a $$3Nx3N$$ blovk matrix that consists of $$NxN$$ blocks for each residue interaction. The off-diagonal blocks
+These eigenvectors represent the magnitude and direction of normal mode vibrations of the system, with the eigenvalues 
+as the squred frequency of these vibrations.
+
+|![Alt Text](Test.gif)|
+|:--:| 
+| *Figure 3: An animation showing vibration along one of the normal modes* |
+
+The ANM Hessian can be derived using our potential in Eq. (2) in Eq. (4). Because ANM uses three dimensional coordinates the
+Hessian is a $$3N \times 3N$$ block matrix that consists of $$N \times N$$ blocks. The off-diagonal blocks
 have the following form.
 
 $$
@@ -133,7 +142,7 @@ $$
 $$
 
 Where $$\vec{r}_{ij}$$ is the distance vector between residues, $$R_{ij}^2$$ is the distance between residues, and
-$$\otimes$$ denotes the outer product of two vectors yielding a $$3 x 3$$ block.
+$$\otimes$$ denotes the outer product of two vectors yielding a $$3 \times 3$$ block.
 The diagonal blocks of our Hessian Matrix are the sum of all other blocks in that row.
 
 $$
@@ -143,19 +152,26 @@ $$
 $$
 
 From the results of NMA we can determine the pairwise fluctuations in distance between residues by first constructing the
-cross correlation between the fluctuation of residues. The correlation matrix is related to the inverse of the Hessian by taking
-the trace of each 3x3 submatrix.
+covariance matrix. The cross-correlation between fluctuations of two residues is determined by the trace of their 
+$$3 \times 3$$ block. The covariance matrix $$\mathbf{C}_{ij}$$ has these cross-correlations as its entries.
 
 $$
 \begin{equation}
-    \mathbf{C}_{ij} = \langle \Delta \mathbf{R}_i \Delta \mathbf{R}_j \rangle = k_b T tr(\mathbf{H}^{-1}_{ij})
+    \mathbf{C}_{ij} = \langle \Delta x_i \Delta x_j \rangle = k_b T * tr(\mathbf{H}^{-1}_{ij})
 \end{equation}
 $$
 
+Where $$\Delta x_i$$ is the distance from equilibrium for residue i. Distance fluctuations can be determined from cross-correlations
+using the following identity.
 
+$$
+\begin{equation}
+    \mathbf{f}_{ij}^2 = \mathbf{C}_{ii} + \mathbf{C}_{jj} - 2 \mathbf{C}_{ij}
+\end{equation}
+$$
 
-The Hessian matrix is, however, singular and cannot be exactly inverted, having 6 zero eigenvalues. We instead construct
-a pseudo-inverse from the eigenvectors/normal modes we calculated.
+The Hessian matrix is, however, singular and cannot be exactly inverted, having exactly 6 zero eigenvalues. We can instead
+construct a pseudo-inverse from the eigenvectors/normal modes.
 
 $$
 \begin{equation}
@@ -163,6 +179,8 @@ $$
 \end{equation}
 $$
 
+The presence of the eigenvalues in the denominator means that lower frequency modes will dominate and only a subset of
+modes will be necessary to accurately predict 
 
 | ![myimg](distflucts.png) |
 |:--:| 
@@ -198,9 +216,11 @@ This method requires us to first transform our measure of dissimilarity, distanc
 
 $$
 \begin{equation}
-    S_{i,j} = e^{-D_{i,j}^2 / 2 \bar{D}^2}
+    S_{i,j} = e^{-f_{i,j}^2 / 2 \bar{f}^2}
 \end{equation}
 $$
+
+Where $$\bar{f}^2$$ is the average squared distance fluctuation between connected residues.
 
 We can use the nature of connectivity in our model to simplify our similarity matrix by setting the similarity of unconnected
 residues to zero. 
