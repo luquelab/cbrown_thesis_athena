@@ -197,24 +197,17 @@ modes will be necessary to accurately predict correlations and distance fluctuat
 
 ## 2.4 Spectral Clustering
 
+To identify our capsomers we need to select what properties we expect of them. If the capsomers represent mechanical or
+assembly units of the capsid, we would expect them to be relatively rigid. Rigid structures have zero fluctuations in distance
+between any elements of the structure, but we do realistically expect some internal fluctuations. We instead look for 
+subunits with minimal internal distance fluctuations, a metric called quasi-rigidity. This metric has been successfully used for
+identifying subunits of small capsids in previous works. {%cite Ponzoni2015 %}
 
+Once we have the pairwise distance fluctuations between the residues of the capsid we need to select an algorithm or 
+heuristic that can subdivide our network into optimally quasi-rigid subunits. There exist many algorithms to identify
+optimal clusterings of data, but of the most effective algorithms used when dealing with large, sparsely connected systems
+is Spectral Clustering. {%cite vonLuxburg2007 %}
 
-*Assumption: Capsomers correspond to quasi rigid domains of a viral capsid*
-
-Here we use the same definition of a quasi rigid domain as described in {% cite Ponzoni2015 %}. A rigid structures is a structure in
-which the distances between elements of the structure are fixed over time and under transformations in space. A quasi-rigid structure
-is thus a structure where the fluctuations between elements of the structure are minimized. We calculate the pairwise
-distance fluctuation of a structure in the following manner.
-
-
-
-A quasi rigid domain of a protein structure is a domain of the protein which satisfied our definition of a quasi rigid 
-structure.
-
-
-Now that we have determined the pairwise distance fluctuations between the residues of the capsid we need to determine
-an optimal subdivision, or clustering, of the system. There exist many algorithms to identify optimal clusterings of
-data. One of the most effective algorithms used when dealing with large, sparsely connected systems is Spectral Clustering.
 This method requires us to first transform our measure of dissimilarity, distance fluctuations, into a measure of similarity.
 
 $$
