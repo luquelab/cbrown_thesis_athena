@@ -2,6 +2,7 @@
 layout: default
 title: Methods
 nav_order: 3
+usemathjax: true
 ---
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -130,7 +131,24 @@ $$
 \end{equation}
 $$
 
-We are interested in determining the 
+From the results of NMA we can determine the pairwise fluctuations in distance between residues by first constructing the
+cross correlation between the fluctuation of residues. The correlation matrix is related to the inverse of the Hessian by taking
+the trace of each 3x3 submatrix.
+
+$$
+\begin{equation}
+    \mathbf{C}_{ij} = \langle \Delta \mathbf{R}_i \Delta \mathbf{R}_j \rangle = tr(\mathbf{H}^{-1}_{ij})
+\end{equation}
+$$
+
+The Hessian matrix is, however, singular and cannot be exactly inverted, having 6 zero eigenvalues. We instead construct
+a pseudo-inverse from the eigenvectors/normal modes we calculated.
+
+$$
+\begin{equation}
+    \mathbf{H}^{-1} = \sum_{i=1}
+\end{equation}
+$$
 
 
 ![myimg](distflucts.png)

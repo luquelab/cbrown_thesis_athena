@@ -32,7 +32,6 @@ theme: "just-the-docs"
 
 markdown: kramdown
 
-usemathjax: true
 
 scholar:
   style: "apa"
