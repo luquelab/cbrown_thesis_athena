@@ -10,7 +10,7 @@ nav_order: 3
 
 ## 2.1 Data Acquisition
 
-All atomic models are acquire in PDB format and are, with few exceptions, acquired from the RCSB Protein Databank. The
+All atomic models are acquired in PDB format and are, with few exceptions, from the RCSB Protein Databank. The
 majority of .pdb files for viral capsids contain an asymmetric unit and a set of icosahedral rotations that build the
 full capsid. 
 
@@ -20,7 +20,8 @@ full capsid.
 
 
 
-## 2.3 Elastic Network Models
+## 2.2 Elastic Network Models
+
 Among coarse grained models aimed at describing large scale molecular dynamics the most popular options are Elastic Network 
 Models (ENM). Most elastic network models begin by coarse graining the system at the residue level by considering only
 the coordinates of the alpha carbon atoms in each residue. These are chosen as representative atoms for each residue, and
@@ -42,7 +43,6 @@ $$
     \begin{array}{ll}
       \gamma, & R_{ij} \leq r_c \\
       0, & R_{ij} > r_c
-      
     \end{array} 
 \end{equation}
 $$
