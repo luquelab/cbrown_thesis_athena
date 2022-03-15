@@ -4,6 +4,8 @@ title: Methods
 nav_order: 3
 ---
 
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 # 2. Methods
 
 ## 2.1 Data Acquisition
