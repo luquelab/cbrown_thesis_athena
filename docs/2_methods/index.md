@@ -163,11 +163,22 @@ inverse of the Hessian matrix in the following manner.
 
 $$
 \begin{equation}
-    \mathbf{C}_{ij} = \langle \Delta x_i \Delta x_j \rangle = k_b T * tr(\mathbf{H}^{-1}_{ij})
+    C_{ij} = \langle \Delta x_i \Delta x_j \rangle = k_b T * tr(\mathbf{H}^{-1}_{ij})
 \end{equation}
 $$
 
-Where $$\Delta x_i$$ is the distance from equilibrium for residue i. These correlations can also be used to determine the
+Where $$\Delta x_i$$ is the distance from equilibrium for residue i. This formula also yields the primary experimental
+method to validate ANM. The square fluctuation of residues can be compared directly to experimental Debye-Waller factors
+(b-factors) that are typically recorded in PDB files. {%cite d2002 %} {%cite Eyal2006 %}
+
+$$
+\begin{equation}
+    B_i = \frac{8 \pi^2 k_b T }{3 \gamma} \langle (\Delta x_i)^2 \rangle = \frac{8 \pi^2 k_b T }{3 \gamma} C_{ii}
+\end{equation}
+$$
+
+
+These correlations can also be used to determine the
 fluctuations in distance between residues using the following identity.
 
 $$
