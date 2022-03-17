@@ -51,5 +51,3 @@ The tool is also being developed and documented in a [Github Repository.](https:
 I created coarse grained toy models of capsids based on those used in [Zandi & Reguera 2004](https://www.pnas.org/content/101/44/15556)
 for the purpose of comparing standard hexagonal capsid structures with trihexagonal capsid structures.
 
-## 
-

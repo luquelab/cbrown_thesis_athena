@@ -33,7 +33,7 @@ the most commonly used ENM and the simplest in its formulation.{% cite Bahar2010
 We construct our model by coarse-graining to the level of protein residues, selecting only the carbon alpha atoms as the representative
 coordinates of each residue. This has been shown to be sufficient for describing global dynamics of a protein, being able to match
 residue fluctuations to experimental b-factors. {%cite Eyal2006 %} Rather than connect all residues, only residues within a cutoff distance
-of each other are connected with springs. We use th connectivity matrix $$\mathbf{\Gamma}$$ to represent this.
+of each other are connected with springs. We use the connectivity matrix $$\mathbf{\Gamma}$$ to represent this.
 
 $$
 \begin{equation}
@@ -111,7 +111,7 @@ $$
 \end{equation}
 $$
 
-Where $$\Delta \vec{q}$$ is the deviation from the equilibrium conformation $$\vec{q}^0$$
+Where $$\Delta \vec{q}$$ is the deviation from the equilibrium conformation $$\vec{q}^0$$.
 Our equation of motion may then be written using the Hessian as follows:
 
 $$
@@ -136,7 +136,7 @@ as the squred frequency of these vibrations.
 |:--:| 
 | *Figure 3: An animation showing vibration along one of the normal modes* |
 
-The ANM Hessian can be derived using our potential in Eq. (2) in Eq. (4). Because ANM uses three dimensional coordinates the
+The ANM Hessian can be derived by placing our potential from Eq. (2) into Eq. (4). Because ANM uses three dimensional coordinates the
 Hessian of an ANM with $$N$$ residues is a $$3N \times 3N$$ block matrix that consists of $$N \times N$$ blocks. The 
 off-diagonal blocks have the following form.
 
