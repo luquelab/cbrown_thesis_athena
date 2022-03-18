@@ -41,17 +41,18 @@ $$
     \begin{array}{ll}
       \gamma, & R_{ij} \leq r_c \\
       0, & R_{ij} > r_c
-    \end{array} 
+    \end{array}
 \end{equation}
 $$
 
 Where $$\gamma$$ is the spring constant, $$r_c$$ is the cutoff distance, and $$R_{ij}$$ is the distance between residues
 i and j. The choice of spring constant typically has little impact on vibrational modes which primarily stem from the shape and
 connectivity of the network.{%cite Bahar2010%} The most important parameter is generally the cutoff distance.
-Since the spring constant is not significant we set it to 1 for our calculations. We set our cutoff distance to $$18Å$$,
-which yields the best agreement between residue square fluctuations and experimental b-factors. {%cite Eyal2006 %}
-The majority of the entries in the connectivity matrix are 0, allowing a significant simplification of computations involving
-it through the use of sparse matrices. 
+Optimal spring constants are typically measured as being close to $$1.0 \frac{kcal}{mol * Å^2}$${%cite d2002 %} {%cite ATILGAN2001 %}. 
+We set our cutoff distance to $$18Å$$,
+which yields the best agreement between residue square fluctuations and experimental Debye-Waller factors (b-factors). 
+{%cite Eyal2006 %} The majority of the entries in the connectivity matrix are 0, allowing a significant simplification
+of computations involving it through the use of sparse matrices.
 
 The potential of ANM is thus the sum of harmonic potentials between each connected residue.
 
@@ -120,17 +121,21 @@ $$
 \end{equation}
 $$
 
-Where the matrix M is a mass matrix, which in our case is the identity matrix and can be ignored. The normal modes of
-the system are solutions to the following eigenvalue problem.
+Where the matrix M is a mass matrix. This can be transformed into an eigenvalue problem to determine the normal mode vibrations of the system.
 
 $$
 \begin{equation}
-    \boldsymbol{H} \vec{v_k} = \omega^2 \vec{v_k}
+    \boldsymbol{H} \vec{v_k} = \omega^2 \boldsymbol{M} \vec{v_k}
 \end{equation}
 $$
 
 These eigenvectors represent the magnitude and direction of normal mode vibrations of the system, with the eigenvalues 
 as the squred frequency of these vibrations.
+
+In the case where all masses are identical the mass matrix reduces to a scalar, 
+and the constant mass can be used to scale the eigenvalues of the system after solving independently of the mass.
+
+
 
 |![Alt Text](Test.gif)|
 |:--:| 
@@ -178,8 +183,7 @@ $$
 $$
 
 
-These correlations can also be used to determine the
-fluctuations in distance between residues using the following identity.
+These correlations can also be used to determine the fluctuations in distance between residues using the following identity.
 
 $$
 \begin{equation}
@@ -220,6 +224,8 @@ optimal clusterings of data, but of the most effective algorithms used when deal
 is Spectral Clustering. {%cite vonLuxburg2007 %}
 
 This method requires us to first transform our measure of dissimilarity, distance fluctuations, into a measure of similarity.
+We do this using the Radial Basis Function (rbf) kernel. This transformation is chosen to mimic a graph with interactions
+ocurring primarily in the 'local neighborhood' of each residue. {%cite vonLuxburg2007 %} 
 
 $$
 \begin{equation}
@@ -248,12 +254,26 @@ $$
 ### Clustering Embedded Points
 
 The eigenvectors of this graph now represent a set of points in a higher dimensional space that can be clustered
-using one of many methods. We choose a 
+using one of many methods. When aiming to identify $$n$$ clusters we use only the first 
 
 ## 2.5 Scoring & Selection
 
 Since our methods take the number of clusters as input, we need to compare results across different numbers of clusters
-and select the optimal clustering. We
+and select the optimal clustering. This requires the use of a scoring metric. We select a scoring metric that measures
+the compactness and separation of our clusters. This score is calculated in the eigenvector space for convenience, but
+a score could be devised that uses the distance fluctuations directly.
+
+
+$$
+\begin{equation}
+    \rho(Q) = \frac{1}{N} \sum_{i=1}^N \frac{\delta_{i,c_0}}{\delta_{i,c_1}}
+\end{equation}
+$$
+
+Where $$N$$ is the number of residues, $$\delta_{i,c_0}$$ is the distance between a residue and the cluster centroid it
+belongs to (compactness), and $$\delta_{i,c_1}$$ is the distance from a residue to the next nearest cluster (separation).
+
+
 
 | ![myimg](2e0z_32_domains.png) |
 |:--:| 
