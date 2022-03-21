@@ -14,7 +14,7 @@ math: mathjax3
 All atomic models are acquired in PDB format and are, with few exceptions, from the RCSB Protein Databank. The
 majority of .pdb files for viral capsids contain an asymmetric unit and a set of icosahedral rotations that build the
 full capsid. {%cite PDB101 %} These models are built by fitting folded proteins into density distributions measured using X-Ray Crystallography
-or Cryo-electron Microscopy. 
+or Cryo-electron Microscopy.
 
 
 
