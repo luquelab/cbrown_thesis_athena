@@ -31,9 +31,15 @@ easily coarse-grained to any level depending on computational needs. We select t
 the most commonly used ENM and the simplest in its formulation.{% cite Bahar2010 %} 
 
 We construct our model by coarse-graining to the level of protein residues, selecting only the carbon alpha atoms as the representative
-coordinates of each residue. This has been shown to be sufficient for describing global dynamics of a protein, being able to match
-residue fluctuations to experimental b-factors. {%cite Eyal2006 %} Rather than connect all residues, only residues within a cutoff distance
-of each other are connected with springs. We use the connectivity matrix $$\mathbf{\Gamma}$$ to represent this.
+coordinates of each residue. This has been shown to be sufficient for describing global dynamics of a protein, being able to match 
+residue mean squared fluctuations to Debye-Waller factors (B-factors). B-factors represent the spread of an electron density
+which in the case of X-rax crystallography are measured directly. B-factors are related to squared fluctuations using
+this relation, $$B = 8 \pi^2 \langle \Delta x^2 \rangle where $$\Delta x^2$$ is the mean squared fluctuation of an atom.
+ {%cite Eyal2006 %} {%cite bfactor 2021 %} 
+
+Rather than connect all residues, only residues within a cutoff distance
+of each other are connected with springs. We use the connectivity matrix $$\mathbf{\Gamma}$$ to represent which residues are
+connected.
 
 $$
 \begin{equation}
@@ -47,14 +53,17 @@ $$
 
 Where $$\gamma$$ is the spring constant, $$r_c$$ is the cutoff distance, and $$R_{ij}$$ is the distance between residues
 i and j. The choice of spring constant typically has little impact on vibrational modes which primarily stem from the shape and
-connectivity of the network.{%cite Bahar2010%} The most important parameter is generally the cutoff distance.
-Optimal spring constants are typically measured as being close to $$1.0 \frac{kcal}{mol * Å^2}$${%cite d2002 %} {%cite ATILGAN2001 %}. 
-We set our cutoff distance to $$18Å$$,
-which yields the best agreement between residue square fluctuations and experimental Debye-Waller factors (b-factors). 
-{%cite Eyal2006 %} The majority of the entries in the connectivity matrix are 0, allowing a significant simplification
-of computations involving it through the use of sparse matrices.
+connectivity of the network.{%cite Bahar2010%} Both constants
+are determined by matching residue square fluctuations to B-factors. {%cite Eyal2006 %} 
+Optimal spring constants are typically near $$1.0 \frac{kcal}{mol * Å^2}$${%cite d2002 %} {%cite ATILGAN2001 %}
+and the cutoff distance is typically $$18Å$$. {%cite Bahar2010%} Since the spring constant doesn't significantly affect
+results it is typically set to 1 to simplify calculations. 
 
-The potential of ANM is thus the sum of harmonic potentials between each connected residue.
+Using a cuttof of $$18Å$$ in Eq. (1) means the majority of the entries in the connectivity matrix are 0
+since most capsids are significantly larger than the cutoff distance. THis allows a significant simplification
+of computations through the use of sparse matrices.
+
+The potential of ANM is thus the sum of potentials between each connected residue.
 
 $$
 \begin{equation}
@@ -67,12 +76,12 @@ This underlying potential serves as the basis for analyzing the system, typicall
 
 | ![](2e0z_enm.png) |
 |:--:| 
-| *Figure 2: A representation of an Elastic Network Model using the example of PDB 2e0z.* |
+| *Figure 2: A representation of an Elastic Network Model using the example of a Pyrococcus Furiosus VLP. (pbd: 2e0z)* |
 
 
 ## 2.3 Normal Mode Analysis
 
-We are interested in the large scale dynamics of the capsid near equilibrium. This prompts us to make use of a technique
+We are interested in the macroscopic of the capsid near equilibrium. This prompts us to make use of a technique
 called Normal Mode Analysis (NMA). NMA aims to
 approximate vibrations around the equilibrium by assuming harmonic potentials and considering only
 a subset of the vibrational modes of the system, typically low-frequency vibrations. The assumptions necessary for accurate NMA 
@@ -80,7 +89,7 @@ are that the system is in a local equilibrium and that all particles in the syst
 harmonic potential. This means NMA is accurate only near the equilibrium conformation.
 
 NMA disregards any specific interactions and constraints in the system. As a result it describes only macroscopic
-motions and will fail to represent, for example, complex bonds within a protein. The requirement that the system be in
+motions and will fail to represent, for example, hydrogen bonds. The requirement that the system be in
 equilibrium means that some models would require an energy minimization step prior to performing NMA. Elastic Network Models
 circumvent this requirement since they explicitly take the initial structure as the equilibrium.
 
@@ -130,10 +139,10 @@ $$
 $$
 
 These eigenvectors represent the magnitude and direction of normal mode vibrations of the system, with the eigenvalues 
-as the squred frequency of these vibrations.
-
-In the case where all masses are identical the mass matrix reduces to a scalar, 
-and the constant mass can be used to scale the eigenvalues of the system after solving independently of the mass.
+as the squared frequency of these vibrations. In the case where all masses and spring constants are uniform they reduce to a scalar multiplication. As a result they can be ignored in the 
+eigenvalue problem as they merely scale the resulting frequencies $$\omega^2_* = \frac{\gamma}{m} \omega^2$$.  Mass is thus
+parametrized within our choice of spring constant, and a physical value for the frequencies can be extracted from
+a choice of mass that reflects our level of coarse-graining.
 
 
 
