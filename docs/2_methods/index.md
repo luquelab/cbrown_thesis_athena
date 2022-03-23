@@ -25,16 +25,22 @@ or Cryo-electron Microscopy.
 ## 2.2 Normal Mode Analysis
 
 Normal Mode Analysis (NMA) is a technique for analyzing the near-equilibrium dynamics of a physical system. NMA aims to
-approximate vibrations around the equilibrium by assuming harmonic potentials and considering only
-a subset of the vibrational modes of the system, typically low-frequency vibrations. The assumptions necessary for accurate NMA 
-are that the system is in a local equilibrium and that all particles in the system interact under a simple
-harmonic potential. This means NMA is accurate only near the equilibrium conformation. {% cite Bahar2010 %}
+approximate vibrations around an equilibrium by determining the normal modes of vibrations accessible by the system.
+Typically only a subset of the normal modes are used to simplify computations, most often the low frequency modes.
+The assumptions necessary for accurate NMA 
+are that the system is in a local equilibrium and that the interaction potential can be approximated as harmonic.
+The harmonic approximation only holds near the equilibrium and will lose accuracy as vibrations grow larger. {% cite Bahar2010 %}
 
-NMA disregards any specific interactions and constraints in the system. As a result it describes only motions 
-motions and will fail to represent, for example, hydrogen bonds. The requirement that the system be in
-equilibrium means that some models would require an energy minimization step prior to performing NMA. Some models, such as
-Elastic Network Models discussed in section 2.3, avoid this step since the initial conformation  can be set as the 
-equilibrium. {% cite Bahar2010 %}
+The harmonic approximation also means specific local constraints won't be represented unless added explicitly. This means
+usually rigid or constrained elements of a molecule would fluctuate freely. This means NMA is best used to determine
+large-scale dynamics that are independent of these local interactions. In fact, NMA results are most often interpreted
+as properties of the 3D shape of the system, not its specific interactions. {% cite Bahar2010 %}
+
+The requirement that the system be in equilibrium means that some models would require an energy minimization step prior
+to performing NMA. This can be a very costly step depending on the form of the underlying potential, and can negatively
+impact the accuracy of the NMA if the system is not fully minimized. 
+It is useful then, that some simpler models, such as the Elastic Network Models discussed in section 2.3, avoid this step completely since the 
+initial conformation can be explicitly set as the equilibrium.
 
 The mathematical formulation of NMA begins by considering a taylor series of the potential energy about the equilibrium.
 
@@ -47,16 +53,9 @@ $$
 
 Where $$\vec{q}$$ is the state vector of the entire system, i.e. a 1D vector with all degrees of freedom. 
 The first and second terms of this expansion are zero in any equilibrium conformation. Truncating the remaining terms
-gives us a second order approximation of the potential about the equilibrium.
-
-Arranging all of our second derivatives into a matrix $$\mathbf{H}$$ allows us to rewrite the potential using matrix-vector
-products.
-
-$$
-\begin{equation}
-    V(\vec{q}) = 1/2 \Delta \vec{q}^T \mathbf{H} \Delta \vec{q}
-\end{equation}
-$$
+gives us our second order (harmonic) approximation of the potential about the equilibrium.
+Arranging all of our second derivatives into a matrix $$\mathbf{H}$$, called the Hessian Matrix, allows us to rewrite the 
+potential using matrix-vector products.
 
 $$
 \begin{equation}
@@ -64,25 +63,45 @@ $$
 \end{equation}
 $$
 
+$$
+\begin{equation}
+    V(\Delta \vec{q}) = \frac{1}{2} \Delta \vec{q}^T \mathbf{H} \Delta \vec{q}
+\end{equation}
+$$
+
+
+
 Where $$\Delta \vec{q}$$ is the deviation from the equilibrium conformation $$\vec{q}^0$$.
 Our equation of motion may then be written using the Hessian as follows:
 
 $$
 \begin{equation}
-    \boldsymbol{M} \frac{d^2 \Delta \vec{x}}{dt^2} + \boldsymbol{H} \Delta \vec{x} = 0
+    \mathbf{M} \frac{d^2 \Delta \vec{q}}{dt^2} + \mathbf{H} \Delta \vec{q} = 0
 \end{equation}
 $$
 
-Where the matrix M is a mass matrix. This can be transformed into an eigenvalue problem to determine the normal mode vibrations of the system.
+Where the matrix $$\mathbf{M}$$ is diagonal matrix containing the masses associated with each degree of freedom. This can
+be transformed into a generalized eigenvalue problem to determine the normal mode vibrations of the system.
 
 $$
 \begin{equation}
-    \boldsymbol{H} \vec{v_k} = \omega^2 \boldsymbol{M} \vec{v_k}
+    \mathbf{H} \vec{v_k} = \omega^2 \mathbf{M} \vec{v_k}
 \end{equation}
 $$
 
-These eigenvectors represent the magnitude and direction of normal mode vibrations of the system and the eigenvalues are
-the squared frequencies.
+These eigenvectors represent the magnitude and direction of normal mode vibrations along each degree of freedom and the 
+eigenvalues are the squared frequencies of these modes. Calculating all eigenvectors and eigenvalues of the system would
+be prohibitive, it would be preferable to only calculate a significant subset. Thermodynamically, we expect motion along 
+higher energy modes to be less likely. The contribution of an individual mode is inversely proportional to its frequency.
+
+$$
+\begin{equation}
+    V(\vec{v_k}) = \frac{1}{2} \Delta \vec{v_k}^T \mathbf{H} \Delta \vec{v_k} = \frac{\omega_k^2}{2}
+\end{equation}
+$$
+
+
+
 In the case where all masses are uniform they reduce to a scalar multiplication. 
 As a result they can be ignored in the eigenvalue problem as they merely scale the resulting frequencies $$\omega^2_* = \frac{\gamma}{m} \omega^2$$.  
 A physical value for the frequencies can be extracted from a choice of mass that reflects our level of coarse-graining.
