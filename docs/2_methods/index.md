@@ -101,10 +101,21 @@ $$
 $$
 
 
+As such when applying NMA one typically calculates only the $$n_k$$ lowest frequency modes and considers only vibration along
+those modes.
 
-In the case where all masses are uniform they reduce to a scalar multiplication. 
-As a result they can be ignored in the eigenvalue problem as they merely scale the resulting frequencies $$\omega^2_* = \frac{\gamma}{m} \omega^2$$.  
-A physical value for the frequencies can be extracted from a choice of mass that reflects our level of coarse-graining.
+A useful application of NMA is determining the cross-correlations between motion in each degree of freedom. These correlations
+represent the statistical overlap between these motions. A high correlation means the two degrees often fluctuate together.
+The covariance matrix $$\mathbf{C}_{ij}$$ that has these cross-correlations as its entries and can be constructed from the 
+inverse of the Hessian matrix in the following manner.
+
+$$
+\begin{equation}
+    C_{ij} = \langle \Delta x_i \Delta x_j \rangle = k_b T * tr(\mathbf{H}^{-1}_{ij})
+\end{equation}
+$$
+
+
 
 
 
@@ -190,6 +201,10 @@ $$
 \end{equation}
 $$
 
+In the case where all masses are uniform they reduce to a scalar multiplication. 
+As a result they can be ignored in the eigenvalue problem as they merely scale the resulting frequencies $$\omega^2_* = \frac{\gamma}{m} \omega^2$$.  
+A physical value for the frequencies can be extracted from a choice of mass that reflects our level of coarse-graining.
+
 An important result of NMA is the correlation between the fluctuations of the residues. These correlations represent
 the overlap in the motion of two residues.
 The covariance matrix $$\mathbf{C}_{ij}$$ has these cross-correlations as its entries and can be constructed from the 
@@ -230,8 +245,7 @@ $$
 \end{equation}
 $$
 
-The presence of the eigenvalues in the denominator means that lower frequency modes will dominate and only a subset of
-modes will be necessary to accurately predict correlations and distance fluctuations. 
+
 
 | ![myimg](distflucts.png) |
 |:--:| 
