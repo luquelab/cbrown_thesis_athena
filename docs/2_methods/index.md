@@ -111,12 +111,28 @@ inverse of the Hessian matrix in the following manner.
 
 $$
 \begin{equation}
-    C_{ij} = \langle \Delta x_i \Delta x_j \rangle = k_b T * tr(\mathbf{H}^{-1}_{ij})
+    C_{ij} = \langle \Delta q_i \Delta q_j \rangle = k_b T * (\mathbf{H}^{-1})_{ij}
 \end{equation}
 $$
 
+In the specific case of cartesian coordinates, the Hessian and its inverse are organized into $$3 \times 3$$ blocks for
+each element of the system. The mean square fluctuations of an element can then be calculated by taking the trace of its
+diagonal block.
 
+$$
+\begin{equation}
+    C_{ii} = \langle (\Delta q_i)^2 \rangle = k_b T * tr(\mathbf{H}^{-1}_{ii})
+\end{equation}
+$$
 
+Where in this case $$\mathbf{H}_{ii}$$ is a $$3 \times 3$$ sublock corresponding to element i. These fluctuations are the
+most common way of validating NMA results since they are readily comparable to Debye-Waller factors (B-factors).
+B-factors represent the spread of an electron density and in the case of 
+X-rax crystallography are measured directly for each atom. B-factors can be related to mean square fluctuations by the relation
+$$B = 8 \pi^2 \langle \Delta x^2 \rangle$$.  {%cite Eyal2006 %} {%cite bfactor2021 %} This makes for a convenient way
+to validate results and determine the optimal parameters for the underlying model.
+
+With this mathematical formulation of NMA we can now select a model with a potential to use in Eq. 1.
 
 
 |![Alt Text](Test.gif)|
@@ -125,17 +141,17 @@ $$
 
 ## 2.3 The Anisotropic Network Model
 
-Elastic Network Models (ENMs) are among the most popular models for describing large scale protein dynamics. They represent
-proteins as a network of masses and springs in a global equilibrium. They require very few parameters to fully describe the system, and are
+Elastic Network Models (ENMs) are among the most versatile models for describing large scale protein dynamics. {} They represent
+proteins as a network of masses connected to their neighbors by springs. They require very few parameters to fully describe the system, and are
 easily coarse-grained to any level depending on computational needs. We select the Anisotropic Network Model (ANM),
-the most commonly used ENM and the simplest in its formulation.{% cite Bahar2010 %} 
+the most commonly used ENM and the simplest in its formulation.{% cite Bahar2010 %}
+
+These models are used alongside Normal Mode Analysis and the results are validated by comparing their prediction of mean squared fluctuations
+to Debye-Waller factors (B-factors).
 
 We construct our model by coarse-graining to the level of protein residues, selecting only the carbon alpha atoms as the representative
-coordinates of each residue. This has been shown to be sufficient for describing global dynamics of a protein, being able to match 
-residue mean squared fluctuations to Debye-Waller factors (B-factors). B-factors represent the spread of an electron density
-which in the case of X-rax crystallography are measured directly. B-factors are related to squared fluctuations using
-this relation, $$B = 8 \pi^2 \langle \Delta x^2 \rangle where $$\Delta x^2$$ is the mean squared fluctuation of an atom.
- {%cite Eyal2006 %} {%cite bfactor 2021 %} 
+coordinates of each residue. 
+
 
 Rather than connect all residues, only residues within a cutoff distance
 of each other are connected with springs. We use the connectivity matrix $$\mathbf{\Gamma}$$ to represent which residues are
