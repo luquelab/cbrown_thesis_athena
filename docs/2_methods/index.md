@@ -22,8 +22,78 @@ or Cryo-electron Microscopy.
 |:--:| 
 | *Figure 1: Pyrococcus Furiosus VLP visualized in ChimeraX using pdb id 2e0z.* |
 
+## 2.2 Normal Mode Analysis
 
-## 2.2 The Anisotropic Network Model
+Normal Mode Analysis (NMA) is a technique for analyzing the near-equilibrium dynamics of a physical system. NMA aims to
+approximate vibrations around the equilibrium by assuming harmonic potentials and considering only
+a subset of the vibrational modes of the system, typically low-frequency vibrations. The assumptions necessary for accurate NMA 
+are that the system is in a local equilibrium and that all particles in the system interact under a simple
+harmonic potential. This means NMA is accurate only near the equilibrium conformation. {% cite Bahar2010 %}
+
+NMA disregards any specific interactions and constraints in the system. As a result it describes only motions 
+motions and will fail to represent, for example, hydrogen bonds. The requirement that the system be in
+equilibrium means that some models would require an energy minimization step prior to performing NMA. Some models, such as
+Elastic Network Models discussed in section 2.3, avoid this step since the initial conformation  can be set as the 
+equilibrium. {% cite Bahar2010 %}
+
+The mathematical formulation of NMA begins by considering a taylor series of the potential energy about the equilibrium.
+
+$$
+\begin{equation}
+    V(\vec{q}) = V(\vec{q^0}) + \sum_{i}\Delta q_i \frac{\partial V}{\partial q_i }|_{q=q^0}  + 1/2 \sum_{i,j}\Delta q_i \Delta q_j \frac{\partial^2 V}{\partial q_i \partial q_j }|_{q=q^0} + \dots
+\end{equation}
+$$
+
+
+Where $$\vec{q}$$ is the state vector of the entire system, i.e. a 1D vector with all degrees of freedom. 
+The first and second terms of this expansion are zero in any equilibrium conformation. Truncating the remaining terms
+gives us a second order approximation of the potential about the equilibrium.
+
+Arranging all of our second derivatives into a matrix $$\mathbf{H}$$ allows us to rewrite the potential using matrix-vector
+products.
+
+$$
+\begin{equation}
+    V(\vec{q}) = 1/2 \Delta \vec{q}^T \mathbf{H} \Delta \vec{q}
+\end{equation}
+$$
+
+$$
+\begin{equation}
+    H_{ij} = (\frac{\partial^2 V}{\partial q_i \partial q_j})^0
+\end{equation}
+$$
+
+Where $$\Delta \vec{q}$$ is the deviation from the equilibrium conformation $$\vec{q}^0$$.
+Our equation of motion may then be written using the Hessian as follows:
+
+$$
+\begin{equation}
+    \boldsymbol{M} \frac{d^2 \Delta \vec{x}}{dt^2} + \boldsymbol{H} \Delta \vec{x} = 0
+\end{equation}
+$$
+
+Where the matrix M is a mass matrix. This can be transformed into an eigenvalue problem to determine the normal mode vibrations of the system.
+
+$$
+\begin{equation}
+    \boldsymbol{H} \vec{v_k} = \omega^2 \boldsymbol{M} \vec{v_k}
+\end{equation}
+$$
+
+These eigenvectors represent the magnitude and direction of normal mode vibrations of the system and the eigenvalues are
+the squared frequencies.
+In the case where all masses are uniform they reduce to a scalar multiplication. 
+As a result they can be ignored in the eigenvalue problem as they merely scale the resulting frequencies $$\omega^2_* = \frac{\gamma}{m} \omega^2$$.  
+A physical value for the frequencies can be extracted from a choice of mass that reflects our level of coarse-graining.
+
+
+
+|![Alt Text](Test.gif)|
+|:--:| 
+| *Figure 3: An animation showing vibration along one of the normal modes* |
+
+## 2.3 The Anisotropic Network Model
 
 Elastic Network Models (ENMs) are among the most popular models for describing large scale protein dynamics. They represent
 proteins as a network of masses and springs in a global equilibrium. They require very few parameters to fully describe the system, and are
@@ -79,76 +149,7 @@ This underlying potential serves as the basis for analyzing the system, typicall
 | *Figure 2: A representation of an Elastic Network Model using the example of a Pyrococcus Furiosus VLP. (pbd: 2e0z)* |
 
 
-## 2.3 Normal Mode Analysis
 
-We are interested in the macroscopic of the capsid near equilibrium. This prompts us to make use of a technique
-called Normal Mode Analysis (NMA). NMA aims to
-approximate vibrations around the equilibrium by assuming harmonic potentials and considering only
-a subset of the vibrational modes of the system, typically low-frequency vibrations. The assumptions necessary for accurate NMA 
-are that the system is in a local equilibrium and that all particles in the system interact under a simple
-harmonic potential. This means NMA is accurate only near the equilibrium conformation.
-
-NMA disregards any specific interactions and constraints in the system. As a result it describes only macroscopic
-motions and will fail to represent, for example, hydrogen bonds. The requirement that the system be in
-equilibrium means that some models would require an energy minimization step prior to performing NMA. Elastic Network Models
-circumvent this requirement since they explicitly take the initial structure as the equilibrium.
-
-The mathematical formulation of NMA begins by considering a taylor series of the potential about the equilibrium.
-
-$$
-\begin{equation}
-    V(\vec{q}) = V(\vec{q^0}) + \sum_{i}\Delta q_i \frac{\partial V}{\partial q_i }|_{q=q^0}  + 1/2 \sum_{i,j}\Delta q_i \Delta q_j \frac{\partial^2 V}{\partial q_i \partial q_j }|_{q=q^0} + \dots
-\end{equation}
-$$
-
-
-Where $$\vec{q}$$ is the state vector of the entire system, i.e. a 1D vector of all coordinates. 
-The first and second terms of this expansion are zero in any equilibrium conformation. Truncating the remaining terms
-gives us a second order approximation of the potential about the equilibrium.
-
-Arranging all of our second derivatives into a matrix $$\mathbf{H}$$ allows us to rewrite the potential using matrix-vector
-products.
-
-$$
-\begin{equation}
-    V(\vec{q}) = 1/2 \Delta \vec{q}^T \mathbf{H} \Delta \vec{q}
-\end{equation}
-$$
-
-$$
-\begin{equation}
-    H_{ij} = (\frac{\partial^2 V}{\partial q_i \partial q_j})^0
-\end{equation}
-$$
-
-Where $$\Delta \vec{q}$$ is the deviation from the equilibrium conformation $$\vec{q}^0$$.
-Our equation of motion may then be written using the Hessian as follows:
-
-$$
-\begin{equation}
-    \boldsymbol{M} \frac{d^2 \Delta \vec{x}}{dt^2} + \boldsymbol{H} \Delta \vec{x} = 0
-\end{equation}
-$$
-
-Where the matrix M is a mass matrix. This can be transformed into an eigenvalue problem to determine the normal mode vibrations of the system.
-
-$$
-\begin{equation}
-    \boldsymbol{H} \vec{v_k} = \omega^2 \boldsymbol{M} \vec{v_k}
-\end{equation}
-$$
-
-These eigenvectors represent the magnitude and direction of normal mode vibrations of the system, with the eigenvalues 
-as the squared frequency of these vibrations. In the case where all masses and spring constants are uniform they reduce to a scalar multiplication. As a result they can be ignored in the 
-eigenvalue problem as they merely scale the resulting frequencies $$\omega^2_* = \frac{\gamma}{m} \omega^2$$.  Mass is thus
-parametrized within our choice of spring constant, and a physical value for the frequencies can be extracted from
-a choice of mass that reflects our level of coarse-graining.
-
-
-
-|![Alt Text](Test.gif)|
-|:--:| 
-| *Figure 3: An animation showing vibration along one of the normal modes* |
 
 The ANM Hessian can be derived by placing our potential from Eq. (2) into Eq. (4). Because ANM uses three dimensional coordinates the
 Hessian of an ANM with $$N$$ residues is a $$3N \times 3N$$ block matrix that consists of $$N \times N$$ blocks. The 
