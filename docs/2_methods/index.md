@@ -146,8 +146,7 @@ proteins as a network of masses connected to their neighbors by springs. They re
 easily coarse-grained to any level depending on computational needs. We select the Anisotropic Network Model (ANM),
 the most commonly used ENM and the simplest in its formulation.{% cite Bahar2010 %}
 
-These models are used alongside Normal Mode Analysis and the results are validated by comparing their prediction of mean squared fluctuations
-to Debye-Waller factors (B-factors).
+
 
 We construct our model by coarse-graining to the level of protein residues, selecting only the carbon alpha atoms as the representative
 coordinates of each residue. 
