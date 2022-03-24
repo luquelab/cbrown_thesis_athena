@@ -138,7 +138,7 @@ With this mathematical formulation of NMA we can now select a model with a poten
 
 |![Alt Text](Test.gif)|
 |:--:| 
-| *Figure 3: An animation showing vibration along one of the normal modes* |
+| *Figure 2: An animation showing vibration along one of the normal modes* |
 
 ## 2.3 The Anisotropic Network Model
 
@@ -190,7 +190,7 @@ This potential can be used to construct our Hessian and perform NMA on our netwo
 
 | ![](2e0z_enm.png) |
 |:--:| 
-| *Figure 2: A representation of an Elastic Network Model using the example of a Pyrococcus Furiosus VLP. (pbd: 2e0z)* |
+| *Figure 3: A representation of an Elastic Network Model using the example of a Pyrococcus Furiosus VLP. (pbd: 2e0z)* |
 
 The ANM Hessian can be derived by placing our potential from Eq. (10) into Eq. (2). Because ANM uses three dimensional coordinates the
 Hessian of an ANM with $$N$$ residues is a $$3N \times 3N$$ block matrix that consists of a $$3 \times 3$$ block for
@@ -327,17 +327,15 @@ If $$\Lambda$$ is a matrix with the eigenvectors of the laplacian matrix as its 
 in an $$n_c$$ dimensional space.
 Normalizing these points and then clustering them will then yield our final set of clusters.
 
-The 
-
-
+It should not be necessary to use a sophisticated clustering scheme at this step as the spectral embedding should have done
+most of the work. K-means is chosen to perform the final clustering for its simplicity.
 
 ## 2.5 Scoring & Selection
 
 Since our methods take the number of clusters as input, we need to compare results across different numbers of clusters
 and select the optimal clustering. This requires the use of a scoring metric. We select a scoring metric that measures
 the compactness and separation of our clusters. This score is calculated in the eigenvector space for convenience, but
-a score could be devised that uses the distance fluctuations directly.
-
+the score could be applied directly to the distance fluctuations.
 
 $$
 \begin{equation}
@@ -349,10 +347,9 @@ Where $$N$$ is the number of residues, $$\delta_{i,c_0}$$ is the distance betwee
 belongs to (compactness), and $$\delta_{i,c_1}$$ is the distance from a residue to the next nearest cluster (separation).
 
 
-
 | ![myimg](2e0z_32_domains.png) |
 |:--:| 
-| *Figure 5: Comparative plots for Pyrococcus Furiosus VLP* |
+| *Figure 5: Comparative plots for Pyrococcus Furiosus VLP. The first graph is the quality score from Eq. (19). The second plot is of the number of clusters that contain a unique number of residues. This is an indicator of whether clusters are uniform.* |
 
 ## 2.6 Classification & Visualization
 
