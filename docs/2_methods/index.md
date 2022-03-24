@@ -24,23 +24,14 @@ or Cryo-electron Microscopy.
 
 ## 2.2 Normal Mode Analysis
 
-Normal Mode Analysis (NMA) is a technique for analyzing the near-equilibrium dynamics of a physical system. NMA aims to
-approximate vibrations around an equilibrium by determining the normal modes of vibrations accessible by the system.
-Typically only a subset of the normal modes are used to simplify computations, most often the low frequency modes.
-The assumptions necessary for accurate NMA 
-are that the system is in a local equilibrium and that the interaction potential can be approximated as harmonic.
-The harmonic approximation only holds near the equilibrium and will lose accuracy as vibrations grow larger. {% cite Bahar2010 %}
+Normal Mode Analysis (NMA) is a technique for analyzing the near-equilibrium dynamics of a physical system. NMA aims to approximate vibrations around an equilibrium by determining the normal modes of vibrations accessible by the system.
+Typically only a subset of the normal modes are used to simplify computations, most often the low-frequency modes.
+The assumptions necessary for accurate NMA are that the system is in a local equilibrium and the interaction potential is locally harmonic. The harmonic approximation only holds near the equilibrium and will lose accuracy as vibrations grow larger. {% cite Bahar2010 %}
 
-The harmonic approximation also means specific local constraints won't be represented unless added explicitly. This means
-usually rigid or constrained elements of a molecule would fluctuate freely. This means NMA is best used to determine
-large-scale dynamics that are independent of these local interactions. In fact, NMA results are most often interpreted
-as properties of the 3D shape of the system, not its specific interactions. {% cite Bahar2010 %}
+The harmonic approximation also means NMA won't represent specific local constraints. This means usually rigid or constrained elements of a molecule can fluctuate freely. NMA is thus best used to determine large-scale dynamics independent of these local interactions. In fact, NMA results are primarily properties of the 3D shape of the system, not its specific interactions. {% cite Bahar2010 %}
 
-The requirement that the system be in equilibrium means that some models would require an energy minimization step prior
-to performing NMA. This can be a very costly step depending on the form of the underlying potential, and can negatively
-impact the accuracy of the NMA if the system is not fully minimized. 
-It is useful then, that some simpler models, such as the Elastic Network Models discussed in section 2.3, avoid this step completely since the 
-initial conformation can be explicitly set as the equilibrium.
+The requirement that the system be in equilibrium means that some models would require an energy minimization step before performing NMA. Energy minimization can be a very costly step depending on the form of the underlying potential. It can also negatively impact the accuracy of the NMA if the system doesn’t reach a precise minimum. 
+It is then useful that some simpler models, such as the Elastic Network Models discussed in section 2.3, avoid this step since the initial conformation is explicitly the equilibrium.
 
 The mathematical formulation of NMA begins by considering a taylor series of the potential energy about the equilibrium.
 
@@ -51,11 +42,10 @@ $$
 $$
 
 
-Where $$\vec{q}$$ is the state vector of the entire system, i.e. a 1D vector with all degrees of freedom. 
-The first and second terms of this expansion are zero in any equilibrium conformation. Truncating the remaining terms
-gives us our second order (harmonic) approximation of the potential about the equilibrium.
-Arranging all of our second derivatives into a matrix $$\mathbf{H}$$, called the Hessian Matrix, allows us to rewrite the 
-potential using matrix-vector products.
+Where $$\vec{q}$$ is the state vector of the entire system, i.e., a 1D vector containing all degrees of freedom. 
+The first and second terms of Eq. (1) are zero in any equilibrium conformation. Truncating the remaining terms gives us our second-order (harmonic) approximation of the potential about the equilibrium.
+Arranging all of our second derivatives into a matrix $$\mathbf{H}$$, called the Hessian Matrix, allows us to rewrite the potential using matrix-vector products.
+
 
 $$
 \begin{equation}
@@ -80,8 +70,8 @@ $$
 \end{equation}
 $$
 
-Where the matrix $$\mathbf{M}$$ is diagonal matrix containing the masses associated with each degree of freedom. This can
-be transformed into a generalized eigenvalue problem to determine the normal mode vibrations of the system.
+Where the matrix $$\mathbf{M}$$ is diagonal matrix containing the masses associated with each degree of freedom. This tranforms
+into a generalized eigenvalue problem to determine the normal mode vibrations of the system.
 
 $$
 \begin{equation}
@@ -89,10 +79,7 @@ $$
 \end{equation}
 $$
 
-These eigenvectors represent the magnitude and direction of normal mode vibrations along each degree of freedom and the 
-eigenvalues are the squared frequencies of these modes. Calculating all eigenvectors and eigenvalues of the system would
-be prohibitive, it would be preferable to only calculate a significant subset. Thermodynamically, we expect motion along 
-higher energy modes to be less likely. The contribution of an individual mode is inversely proportional to its frequency.
+These eigenvectors represent the magnitude and direction of normal mode vibrations along each degree of freedom, and the eigenvalues are the squared frequencies of these modes. Calculating all eigenvectors and eigenvalues of the system would be prohibitive. It would be preferable only to calculate a significant subset. Thermodynamically, we expect motion along higher energy modes to be less likely. The contribution of an individual mode is inversely proportional to its frequency.
 
 $$
 \begin{equation}
@@ -101,13 +88,11 @@ $$
 $$
 
 
-As such when applying NMA one typically calculates only the $$n_k$$ lowest frequency modes and considers only vibration along
-those modes.
+As such, when applying NMA, one typically calculates only the $$n_k$$ lowest frequency modes and considers only vibration along those modes.
 
-A useful application of NMA is determining the cross-correlations between motion in each degree of freedom. These correlations
-represent the statistical overlap between these motions. A high correlation means the two degrees often fluctuate together.
-The covariance matrix $$\mathbf{C}_{ij}$$ that has these cross-correlations as its entries and can be constructed from the 
-inverse of the Hessian matrix in the following manner.
+A valuable application of NMA is determining the cross-correlations between motion in each degree of freedom. These correlations represent the statistical overlap between these motions. A high correlation means the two degrees often fluctuate together.
+The covariance matrix $$\mathbf{C}_{ij}$$ that has these cross-correlations as its entries. One can construct it from the inverse of the Hessian matrix in the following manner.
+
 
 $$
 \begin{equation}
@@ -279,7 +264,7 @@ to the Normalized Graph Cut problem.{%cite vonLuxburg2007 %} An advantage that t
 can be arbitrary shapes. Spectral clustering is also based on similarity rather than distance, which can be useful simplify calculations.
 Since the similarity of distant elements approach 0, approximating them as exactly 0 allows one to use a sparse similarity
 matrix. To make use of the technique however, we must first transform our distance fluctuations into a graph. Specifically
-the Laplacian Matrix of a graph, which represents the action of the Discrete Laplace Operator on the graph/
+the Laplacian Matrix of a graph, which represents the action of the Discrete Laplace Operator on the graph.
 
 
 First we transform our measure of dissimilarity, distance fluctuations, into a measure of similarity using a Gaussian 
