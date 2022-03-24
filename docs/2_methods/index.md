@@ -325,7 +325,9 @@ cluster membership.
 
 If $$\Lambda$$ is a matrix with the eigenvectors of the laplacian matrix as its columns, its rows now represent points
 in an $$n_c$$ dimensional space.
-Normalizing these points and then clustering them will yield our final set of clusters.
+Normalizing these points and then clustering them will then yield our final set of clusters.
+
+The 
 
 
 
