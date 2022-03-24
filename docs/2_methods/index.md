@@ -115,7 +115,8 @@ $$
 \end{equation}
 $$
 
-In the specific case of cartesian coordinates, the Hessian and its inverse are organized into $$3 \times 3$$ blocks for
+In the specific case of a model using cartesian coordinates, such as the Anisotropic Network model,
+the Hessian and its inverse are organized into $$3 \times 3$$ blocks for
 each element of the system. The mean square fluctuations of an element can then be calculated by taking the trace of its
 diagonal block.
 
@@ -128,9 +129,9 @@ $$
 Where in this case $$\mathbf{H}_{ii}$$ is a $$3 \times 3$$ sublock corresponding to element i. These fluctuations are the
 most common way of validating NMA results since they are readily comparable to Debye-Waller factors (B-factors).
 B-factors represent the spread of an electron density and in the case of 
-X-rax crystallography are measured directly for each atom. B-factors can be related to mean square fluctuations by the relation
+X-rax crystallography are measured directly for each atom in a pdb. B-factors can be related to mean square fluctuations by the relation
 $$B = 8 \pi^2 \langle \Delta x^2 \rangle$$.  {%cite Eyal2006 %} {%cite bfactor2021 %} This makes for a convenient way
-to validate results and determine the optimal parameters for the underlying model.
+to validate results and determine the optimal parameters in one's choice of model.
 
 With this mathematical formulation of NMA we can now select a model with a potential to use in Eq. 1.
 
@@ -141,20 +142,17 @@ With this mathematical formulation of NMA we can now select a model with a poten
 
 ## 2.3 The Anisotropic Network Model
 
-Elastic Network Models (ENMs) are among the most versatile models for describing large scale protein dynamics. {} They represent
+Elastic Network Models (ENMs) are among the most versatile models for describing large scale protein dynamics. They represent
 proteins as a network of masses connected to their neighbors by springs. They require very few parameters to fully describe the system, and are
-easily coarse-grained to any level depending on computational needs. We select the Anisotropic Network Model (ANM),
-the most commonly used ENM and the simplest in its formulation.{% cite Bahar2010 %}
+easily coarse-grained to any level depending on computational needs. We select the Anisotropic Network Model (ANM), for 
+its ability to describe normal mode directions in 3D. This property of ANM allows applications where it is used to generate
+alternate conformations by deforming a molecule along the normal modes. {% cite Eyal2015 %}
 
 
-
-We construct our model by coarse-graining to the level of protein residues, selecting only the carbon alpha atoms as the representative
-coordinates of each residue. 
-
-
+To simplify computations the full atomic model can be transformed into an Elastic Network by coarse graining to the level
+of protein residues. We select the alpha-carbon atoms as representative centroids for each protein residue.
 Rather than connect all residues, only residues within a cutoff distance
-of each other are connected with springs. We use the connectivity matrix $$\mathbf{\Gamma}$$ to represent which residues are
-connected.
+of each other are connected with springs. This is expressed through the connectivity matrix $$\mathbf{\Gamma}$$. {%cite Eyal2006 %} 
 
 $$
 \begin{equation}
@@ -167,18 +165,19 @@ $$
 $$
 
 Where $$\gamma$$ is the spring constant, $$r_c$$ is the cutoff distance, and $$R_{ij}$$ is the distance between residues
-i and j. The choice of spring constant typically has little impact on vibrational modes which primarily stem from the shape and
-connectivity of the network.{%cite Bahar2010%} Both constants
-are determined by matching residue square fluctuations to B-factors. {%cite Eyal2006 %} 
-Optimal spring constants are typically near $$1.0 \frac{kcal}{mol * Å^2}$${%cite d2002 %} {%cite ATILGAN2001 %}
-and the cutoff distance is typically $$18Å$$. {%cite Bahar2010%} Since the spring constant doesn't significantly affect
-results it is typically set to 1 to simplify calculations. 
+i and j. The choice of spring constant typically has little impact on vibrational modes which result from the shape and
+connectivity of the network.{%cite Bahar2010%}
 
-Using a cuttof of $$18Å$$ in Eq. (1) means the majority of the entries in the connectivity matrix are 0
-since most capsids are significantly larger than the cutoff distance. THis allows a significant simplification
+Optimal spring constants are found in the range of $$1.0 \pm 0.5 \frac{kcal}{mol * Å^2}$${%cite d2002 %}
+and the cutoff distance is typically $$15Å$$.{% cite Eyal2015 %} Since the spring constant doesn't significantly affect
+results it is typically set to exactly 1.0 to simplify calculations. 
+
+Using a cuttof of $$15Å$$ in Eq. (9) means the majority of the entries in the connectivity matrix are 0
+as most capsids are significantly larger than the cutoff distance. This allows a significant simplification
 of computations through the use of sparse matrices.
 
-The potential of ANM is thus the sum of potentials between each connected residue.
+The potential of ANM can be written using the connectivity matrix and is the sum of spring potentials between each pair
+of connected residues.
 
 $$
 \begin{equation}
@@ -187,18 +186,15 @@ $$
 $$
 
 Where $$\vec{x}_i$$ is the coordinate vector of residue i and $$\vec{x}_i^0$$ is the equilibrium coordinate vector for that residue.
-This underlying potential serves as the basis for analyzing the system, typically through Normal Mode Analysis (NMA).
+This potential can be used to construct our Hessian and perform NMA on our network.
 
 | ![](2e0z_enm.png) |
 |:--:| 
 | *Figure 2: A representation of an Elastic Network Model using the example of a Pyrococcus Furiosus VLP. (pbd: 2e0z)* |
 
-
-
-
-The ANM Hessian can be derived by placing our potential from Eq. (2) into Eq. (4). Because ANM uses three dimensional coordinates the
-Hessian of an ANM with $$N$$ residues is a $$3N \times 3N$$ block matrix that consists of $$N \times N$$ blocks. The 
-off-diagonal blocks have the following form.
+The ANM Hessian can be derived by placing our potential from Eq. (10) into Eq. (2). Because ANM uses three dimensional coordinates the
+Hessian of an ANM with $$N$$ residues is a $$3N \times 3N$$ block matrix that consists of a $$3 \times 3$$ block for
+each residue, for a total of $$N \times N$$ blocks. The off-diagonal blocks have the following form.
 
 $$
 \begin{equation}
@@ -216,33 +212,28 @@ $$
 \end{equation}
 $$
 
-In the case where all masses are uniform they reduce to a scalar multiplication. 
-As a result they can be ignored in the eigenvalue problem as they merely scale the resulting frequencies $$\omega^2_* = \frac{\gamma}{m} \omega^2$$.  
+In the case where all masses and spring constant are uniform they reduce to a scalar multiplication which can let us rewrite
+Equation (5) extracting the spring constant and mass from the matrices.
+
+$$
+\begin{equation}
+    \gamma \mathbf{H} \vec{v_k} = m \omega^2 \vec{v_k}
+\end{equation}
+$$
+
+As a result they can be ignored in the eigenvalue problem as they merely scale the resulting frequencies 
+$$\omega^2_* = \frac{\gamma}{m} \omega^2$$.
 A physical value for the frequencies can be extracted from a choice of mass that reflects our level of coarse-graining.
 
-An important result of NMA is the correlation between the fluctuations of the residues. These correlations represent
-the overlap in the motion of two residues.
-The covariance matrix $$\mathbf{C}_{ij}$$ has these cross-correlations as its entries and can be constructed from the 
-inverse of the Hessian matrix in the following manner.
+When validating the results of NMA using ANM, the formula to compare with B-factors takes the following form.
 
 $$
 \begin{equation}
-    C_{ij} = \langle \Delta x_i \Delta x_j \rangle = k_b T * tr(\mathbf{H}^{-1}_{ij})
+    B_i = \frac{8 \pi^2 k_b T }{3 \gamma} tr(\mathbf{H}^{-1}_{ii})
 \end{equation}
 $$
 
-Where $$\Delta x_i$$ is the distance from equilibrium for residue i. This formula also yields the primary experimental
-method to validate ANM. The square fluctuation of residues can be compared directly to experimental Debye-Waller factors
-(b-factors) that are typically recorded in PDB files. {%cite d2002 %} {%cite Eyal2006 %}
-
-$$
-\begin{equation}
-    B_i = \frac{8 \pi^2 k_b T }{3 \gamma} \langle (\Delta x_i)^2 \rangle = \frac{8 \pi^2 k_b T }{3 \gamma} C_{ii}
-\end{equation}
-$$
-
-
-These correlations can also be used to determine the fluctuations in distance between residues using the following identity.
+The pairwise correlations in Equation (6) can be used to approximate fluctuations in distance between. {%cite Ponzoni2015 %}
 
 $$
 \begin{equation}
@@ -260,46 +251,53 @@ $$
 \end{equation}
 $$
 
-
-
 | ![myimg](distflucts.png) |
 |:--:| 
 | *Figure 4: A matrix of pairwise distance fluctuations* |
 
 
 
-## 2.4 Spectral Clustering
+## 2.4 Quasi-Rigid Subdivisions
 
-To identify our capsomers we need to select what properties we expect of them. If the capsomers represent mechanical or
-assembly units of the capsid, we would expect them to be relatively rigid. Rigid structures have zero fluctuations in distance
-between any elements of the structure, but we do realistically expect some internal fluctuations. We instead look for 
-subunits with minimal internal distance fluctuations, a metric called quasi-rigidity. This metric has been successfully used for
-identifying subunits of small capsids in previous works. {%cite Ponzoni2015 %}
+If capsomers represent mechanical or assembly units of the capsid, we would expect them to be relatively rigid. Rigidity
+is thus the measure we will use to separate the residues into rigid subunits.
+Rigid structures have zero fluctuations in distance
+between any elements of the structure, but realistically there are some internal fluctuations. Thus the method aims to
+minimize distance fluctuations, as defined in Eq. (15), a metric called quasi-rigidity. This metric was previously used to identify
+rigid domains in protein structures, including viral capsids. These methods were, however, primarily targeted towards
+smaller protein structures. {%cite Ponzoni2015 %}
 
-Once we have the pairwise distance fluctuations between the residues of the capsid we need to select an algorithm or 
+Once we have used NMA to get the pairwise distance fluctuations between all residues of a capsid we need to select an algorithm or 
 heuristic that can subdivide our network into optimally quasi-rigid subunits. There exist many algorithms to identify
-optimal clusterings of data, but of the most effective algorithms used when dealing with large, sparsely connected systems
-is Spectral Clustering. {%cite vonLuxburg2007 %}
+optimal clusterings of data, but when dealing with large, sparse datasets, Spectral Clustering is a robust and computationally
+efficient algorithm. 
 
-This method requires us to first transform our measure of dissimilarity, distance fluctuations, into a measure of similarity.
-We do this using the Radial Basis Function (rbf) kernel. This transformation is chosen to mimic a graph with interactions
-ocurring primarily in the 'local neighborhood' of each residue. {%cite vonLuxburg2007 %} 
+### Spectral Clustering
+
+Spectral clustering has its roots in graph theory, and can be formulated as an approximation
+to the Normalized Graph Cut problem.{%cite vonLuxburg2007 %} An advantage that this provides over distance based clustering methods is that clusters
+can be arbitrary shapes. Spectral clustering is also based on similarity rather than distance, which can be useful simplify calculations.
+Since the similarity of distant elements approach 0, approximating them as exactly 0 allows one to use a sparse similarity
+matrix. To make use of the technique however, we must first transform our distance fluctuations into a graph. Specifically
+the Laplacian Matrix of a graph, which represents the action of the Discrete Laplace Operator on the graph/
+
+
+First we transform our measure of dissimilarity, distance fluctuations, into a measure of similarity using a Gaussian 
+Weighting Function. This transformation is chosen because it emphasizes local neighborhoods
+of rigidity, in a similar manner to a nearest neighbor graph, and because large fluctuations approach 0 very quickly. 
+Residues that are not connected by springs are assumed to 
+have zero similarity in order to preserve the sparsity of the matrix and reduce memory requirements.
 
 $$
 \begin{equation}
-    S_{i,j} = e^{-f_{i,j}^2 / 2 \bar{f}^2}
+    S_{i,j} = \Gamma_{ij} e^{-f_{i,j}^2 / 2 \bar{f}^2}
 \end{equation}
 $$
 
-Where $$\bar{f}^2$$ is the average squared distance fluctuation between connected residues.
-
-We can use the nature of connectivity in our model to simplify our similarity matrix by setting the similarity of unconnected
-residues to zero. 
-
-### Spectral Graph Embedding
-
-Spectral embedding is a technique based on graph theory, and requires as an input a Laplacian Matrix representing a graph.
-We can transform a similarity matrix into a Laplacian matrix, specifically the Symmetric Normalized Laplacian, with the 
+Where $$\bar{f}^2$$ is the average squared distance fluctuation between connected residues. This similarity matrix can
+now be thought of as the adjacency matrix of a weighted graph. Spectral graph techniques require the Laplacian matrix of
+a graph. The Laplacian matrix represents the action of a discrete laplace operator on a graph.
+One can transform a similarity matrix into a Laplacian matrix, specifically the Symmetric Normalized Laplacian, with the 
 following identity.
 
 $$
@@ -308,11 +306,28 @@ $$
 \end{equation}
 $$
 
+Where $$D$$ is a diagonal matrix whose entries are the number of neighbors of each node and $$I$$ is the identity matrix.
+
+
+
+### Laplacian Embedding
+
+Finding an optimal subdivision of our graph into $$n_c$$ clusters requires the lowest $$n_c$$ eigenvalues and eigenvectors
+of the Laplacian matrix. These eigenvectors are useful because they each represent an approximate partitioning of the
+graph into two components. {%cite vonLuxburg2007 %} In the ideal case of well separated clusters, each of these eigenvectors
+would represent membership in a single cluster. In practice this is rarely ever the case, but the eigenvectors can be
+used to build a $$n_c$$ dimensional space where we can use a more generic clustering algorithm such as k-means to determine
+cluster membership.
+
+
 
 ### Clustering Embedded Points
 
-The eigenvectors of this graph now represent a set of points in a higher dimensional space that can be clustered
-using one of many methods. When aiming to identify $$n$$ clusters we use only the first 
+If $$\Lambda$$ is a matrix with the eigenvectors of the laplacian matrix as its columns, its rows now represent points
+in an $$n_c$$ dimensional space.
+Normalizing these points and then clustering them will yield our final set of clusters.
+
+
 
 ## 2.5 Scoring & Selection
 
