@@ -18,9 +18,9 @@ or Cryo-electron Microscopy.
 
 
 
-| ![myimg](2e0z_pdb.png) |
+| ![myimg](conceptual_figure.jpg) |
 |:--:| 
-| *Figure 1: Pyrococcus Furiosus VLP visualized in ChimeraX using pdb id 2e0z.* |
+| *Figure 1: Outline of the workflow and techniques used for our methods.* |
 
 ## 2.2 Normal Mode Analysis
 
