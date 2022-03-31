@@ -12,7 +12,7 @@ math: mathjax3
 Tailed phages are among the most abundant and diverse organisms in the ecosystem. They regulate bacterial communities and
 thus play an essential role in systems from the human gut biome {%cite gut2019 %} to the global carbon cycle {%cite carbon2017%}. The genome lengths
 observed in tailed phages, ranging from 5 to 550 kilobase pairs (kbp){%cite kb2020%}{%cite diana2022%}, are key to enabling their diverse roles across
-ecosystems {cite}. This genetic diversity necessitates diversity in the size of the protein shells, called capsids, that 
+ecosystems {%cite phages2020 %}. This genetic diversity necessitates diversity in the size of the protein shells, called capsids, that 
 contain these genomes{%cite diana2022 %}. Indeed, capsids of tailed phages range from 30 to 180 nanometers (nm) in diameter to contain 
 these genomes{%cite hk2019 %}. Despite the diversity in size, tailed phages use only variants of a single type of protein fold, the 
 HK97 fold{%cite hk2019 %} {%cite hk2015 %}. The ubiquity of this fold suggests that its versatility helped tailed phages evolve to fill
