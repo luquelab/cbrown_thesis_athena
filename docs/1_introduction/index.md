@@ -24,11 +24,11 @@ The majority (80-90%) of tailed phages form icosahedrally symmetric capsids {%ci
 for viruses because it reduces the genome space required to encode capsid proteins{%cite Twarock2019%}. Icosahedral symmetry is the most common 
 type of symmetry seen in viral capsids. However, tailed phages stand out for how they build capsids with larger genomes and more complex architectures 
 than similar families of icosahedral viruses{%cite phages2020 %}.
-Generalized theories of icosahedral capsid geometry describe several possible lattices capsids can adopt.{%cite Twarock2019 %}
+Generalized theories of icosahedral capsid geometry describe several possible lattices capsids can adopt{%cite Twarock2019 %}.
 Each 2D lattice 
 represents a different way that the Major Capsid Proteins (MCPs), and sometimes minor Capsid Proteins (mCPs), can form into
 locally symmetric groups called capsomers. The triangulation number, or T-number, determines the total number of proteins, 
-and thus the total number of capsomers, used to build a capsid. A capsid requires $$60T_0$$ total MCPs to build a 
+and thus the total number of capsomers, used to build a capsid. A total of $$60T_0$$ MCPs are needed to build a complete 
 capsid{%cite ck2012 %}.
 
 | ![myimg](geometry.jpg) |
