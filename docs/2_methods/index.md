@@ -50,14 +50,15 @@ $$
 $$
 
 
-Where $$\vec{q}$$ is the state vector of the entire system, i.e., a 1D vector containing all degrees of freedom. 
-The first and second terms of Eq. (1) are zero in any equilibrium conformation. Truncating the remaining terms gives us our second-order (harmonic) approximation of the potential about the equilibrium.
-Arranging all of our second derivatives into a matrix $$\mathbf{H}$$, called the Hessian Matrix, allows us to rewrite the potential using matrix-vector products.
+Where $$\vec{q}$$ is the state vector of the entire system, i.e., a 1D vector containing all system coordinates (cartesian coordinates, dihedral angles, etc.). 
+The first and second terms of Eq. (1) are zero in any equilibrium conformation. Truncating the remaining terms gives a second-order (harmonic) approximation of the potential about the equilibrium.
+Defining a matrix $$H$$, with elements $$H_{ij}$$ being the second partial derivatives in eq. 1 allows for the energy to be
+calculated as a matrix-vector product.
 
 
 $$
 \begin{equation}
-    H_{ij} = (\frac{\partial^2 V}{\partial q_i \partial q_j})^0
+    H_{ij} = (\frac{\partial^2 V}{\partial q_i \partial q_j})|_{q=q^0}
 \end{equation}
 $$
 
@@ -78,16 +79,20 @@ $$
 \end{equation}
 $$
 
-Where the matrix $$\mathbf{M}$$ is diagonal matrix containing the masses associated with each degree of freedom. This tranforms
-into a generalized eigenvalue problem to determine the normal mode vibrations of the system.
+Where the matrix $$\mathbf{M}$$ is diagonal matrix containing the masses associated with each degree of freedom. By assuming
+solutions of the form $$\Delta \vec{q_k}(t) = \vec{v_k}(t) = \vec{a}_{k} cos(\omega_k t + \delta_k)$$, where $$\omega_k$$ and $$\delta_k$$
+are the frequency and phase of mode $$k$$, and $$\vec{a}_{k}$$ is a vector containing the amplitudes for each
+coordinate.
+Substituting this into Eq. 4 transforms the equation of motion into a generalized eigenvalue problem, with the squared
+frequencies as the eigenvalues and the normal modes as the eigenvectors.
 
 $$
 \begin{equation}
-    \mathbf{H} \vec{v_k} = \omega^2 \mathbf{M} \vec{v_k}
+    \mathbf{H} \vec{v_k} = \omega_k^2 \mathbf{M} \vec{v_k}
 \end{equation}
 $$
 
-These eigenvectors represent the magnitude and direction of normal mode vibrations along each degree of freedom, and the eigenvalues are the squared frequencies of these modes. Calculating all eigenvectors and eigenvalues of the system would be prohibitive. It would be preferable only to calculate a significant subset. Thermodynamically, we expect motion along higher energy modes to be less likely. The contribution of an individual mode is inversely proportional to its frequency.
+Calculating all eigenvectors and eigenvalues of the system would be prohibitive. It would be preferable only to calculate a significant subset. Thermodynamically, we expect motion along higher energy modes to be less likely. The contribution of an individual mode is inversely proportional to its frequency.
 
 $$
 \begin{equation}
