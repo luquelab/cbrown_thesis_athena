@@ -11,10 +11,10 @@ math: mathjax3
 
 ## 2.1 Data Acquisition
 
-All atomic models are acquired in PDB format and are, with few exceptions, from the RCSB Protein Databank. The
-majority of .pdb files for viral capsids contain an asymmetric unit and a set of icosahedral rotations that build the
-full capsid. {%cite PDB101 %} These models are built by fitting folded proteins into density distributions measured using X-Ray Crystallography
-or Cryo-electron Microscopy.
+All atomic models are in PDB format and are, with few exceptions, from the RCSB Protein Databank. We collected tailed
+phage models by searching the RCSB for models from the families Myoviridae, Siphoviridae, and Podoviridae, and filtering
+the results to include only icosahedrally symmetric models. From these we selected only mature capsid models with resolutions
+below 5Å if possible. We selected capsids with T numbers of 7 or 13, to minimize computational difficulty.  
 
 
 
@@ -24,13 +24,21 @@ or Cryo-electron Microscopy.
 
 ## 2.2 Normal Mode Analysis
 
-Normal Mode Analysis (NMA) is a technique for analyzing the near-equilibrium dynamics of a physical system. NMA aims to approximate vibrations around an equilibrium by determining the normal modes of vibrations accessible by the system.
-Typically only a subset of the normal modes are used to simplify computations, most often the low-frequency modes.
-The assumptions necessary for accurate NMA are that the system is in a local equilibrium and the interaction potential is locally harmonic. The harmonic approximation only holds near the equilibrium and will lose accuracy as vibrations grow larger. {% cite Bahar2010 %}
+Normal Mode Analysis (NMA) is a technique for analyzing the near-equilibrium dynamics of a physical system{%cite nma2001 %}.
+It assumes the system is held in an equilibrium conformation by approximately harmonic potentials, with small thermal fluctuations as the only
+source of motion. The harmonic approximation of the potential allows one to solve analytically the equations of motion
+in the vicinity of the equilibrium, yielding the systems normal modes of vibration. Physically these normal modes represent
+directions of deformation that incur minimal increases in energy.{%cite bahar2010 %} The squared frequency of each mode determines the curvature 
+of energy increase along that mode, meaning lower frequency modes are more accessible by thermal fluctutaions.
+NMA results only hold in the limit of small fluctuations, as the difference between the approximate and real potential 
+grows with distance from the equilibrium. 
+{% cite Bahar2010 %}
+NMA won't represent specific local constraints. Typically rigid or constrained elements of a molecule will not be considered in the harmonic approximation
+and will instead move freely. NMA is thus best used to determine large-scale dynamics independent local interactions. 
+In fact, NMA results are primarily properties of the 3D shape of the system, not its specific interactions. {% cite Bahar2010 %}
 
-The harmonic approximation also means NMA won't represent specific local constraints. This means usually rigid or constrained elements of a molecule can fluctuate freely. NMA is thus best used to determine large-scale dynamics independent of these local interactions. In fact, NMA results are primarily properties of the 3D shape of the system, not its specific interactions. {% cite Bahar2010 %}
-
-The requirement that the system be in equilibrium means that some models would require an energy minimization step before performing NMA. Energy minimization can be a very costly step depending on the form of the underlying potential. It can also negatively impact the accuracy of the NMA if the system doesn’t reach a precise minimum. 
+The requirement that the system be in equilibrium means that some potentials will have to undergo energy minimization prior to performing NMA. {%cite nma2019 %}
+Energy minimization can be a very costly step depending on the form of the underlying potential. It can also negatively impact the accuracy of the NMA if the system doesn’t reach a precise minimum. 
 It is then useful that some simpler models, such as the Elastic Network Models discussed in section 2.3, avoid this step since the initial conformation is explicitly the equilibrium.
 
 The mathematical formulation of NMA begins by considering a taylor series of the potential energy about the equilibrium.
