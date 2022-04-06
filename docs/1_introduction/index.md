@@ -37,9 +37,9 @@ capsid{%cite ck2012 %}.
 
 These geometric theories have proven useful in analyzing and classifying viral capsids. The T-number effectively 
 predicts capsid and genome sizes in tailed phages and other viral families{%cite diana2022 %}, but the lattice's meaning is harder to 
-interpret. Strictly speaking, the polygons represent locally symmetric groups of proteins, but coarse-grained models of 
-capsid assembly and dynamics often treat capsomers as rigid mechanical subunits{%cite assembly2014 %} {%cite Aznar2012 %}. 
-Identifying the actual rigid subunits of capsids using the HK97 fold can help us understand how they achieve their 
+interpret. Strictly speaking, the polygons represent locally symmetric groups of proteins{%cite ck2020 %}, but coarse-grained models of 
+capsid assembly and dynamics often treat capsomers as rigid mechanical subunits{%cite assembly2014 %}{%cite Aznar2012 %}. 
+Identifying the rigid subunits of HK97-fold capsids can help explain how they achieve their 
 versatility, and whether geometric theories can effectively predict such rigid subunits.
 HK97 fold capsids generally use pentamers and (asymmetric) hexamers as their procapsid assembly units{%cite hk2019%}, but maturation 
 mechanisms can differ significantly between capsids{%cite hk2015 %}, so they are not necessarily the rigid subunits of
