@@ -166,7 +166,7 @@ of connected residues.
 
 $$
 \begin{equation}
-    V(\vec{x}) =  \frac{1}{2 \sum_{i|i \neq j} \Gamma_{ij} (||\vec{x}_i - \vec{x}_j|| - ||\vec{x}^0_i - \vec{x}^0_j||) }
+    V(\vec{x}) =  \frac{1}{2} \sum_{i|i \neq j} \Gamma_{ij} (||\vec{x}_i - \vec{x}_j|| - ||\vec{x}^0_i - \vec{x}^0_j||)^2
 \end{equation}
 $$
 
@@ -241,6 +241,17 @@ $$
 | *Figure 4: A matrix of pairwise distance fluctuations* |
 
 
+
+### Determining Optimal Spring Constant
+
+When fitting ANM predictions to b-factors we fit a scaling factor $$B_i = \alpha tr(\mathbf{H}^{-1}_{ii})$$ and then extract
+the value of the spring constant.
+
+$$
+\begin{equation}
+    \gamma = \frac{8 \pi^2 k_B T}{3 \alpha}
+\end{equation}
+$$
 
 ## 2.4 Quasi-Rigid Subdivisions
 
