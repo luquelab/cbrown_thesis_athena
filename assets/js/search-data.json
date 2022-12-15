@@ -1,0 +1,260 @@
+{"0": {
+    "doc": "Impact",
+    "title": "Impact",
+    "content": " ",
+    "url": "/cbrown_thesis_athena/5_impact/",
+    "relUrl": "/5_impact/"
+  },"1": {
+    "doc": "Impact",
+    "title": "Classification results",
+    "content": " ",
+    "url": "/cbrown_thesis_athena/5_impact/#classification-results",
+    "relUrl": "/5_impact/#classification-results"
+  },"2": {
+    "doc": "Impact",
+    "title": "Program Impacts",
+    "content": " ",
+    "url": "/cbrown_thesis_athena/5_impact/#program-impacts",
+    "relUrl": "/5_impact/#program-impacts"
+  },"3": {
+    "doc": "Methods",
+    "title": "2. Methods",
+    "content": " ",
+    "url": "/cbrown_thesis_athena/2_methods/#2-methods",
+    "relUrl": "/2_methods/#2-methods"
+  },"4": {
+    "doc": "Methods",
+    "title": "2.1 Data Acquisition",
+    "content": "All atomic models are in PDB format and are, with few exceptions, from the RCSB Protein Databank. We collected tailed phage models by searching the RCSB for models from the families Myoviridae, Siphoviridae, and Podoviridae, and filtering the results to include only icosahedrally symmetric models. From these we selected only mature capsid models with resolutions below 5Å if possible. We selected capsids with T numbers of 7 or 13, to minimize computational difficulty. | | . | Figure 1: Outline of the workflow and techniques used for our methods. | . ",
+    "url": "/cbrown_thesis_athena/2_methods/#21-data-acquisition",
+    "relUrl": "/2_methods/#21-data-acquisition"
+  },"5": {
+    "doc": "Methods",
+    "title": "2.2 Normal Mode Analysis",
+    "content": "Normal Mode Analysis (NMA) is a technique for analyzing the near-equilibrium dynamics of a physical system(Goldstein et al., 2001). It assumes the system is held in an equilibrium conformation by approximately harmonic potentials, with small thermal fluctuations as the only source of motion. The harmonic approximation of the potential allows one to solve analytically the equations of motion in the vicinity of the equilibrium, yielding the systems normal modes of vibration. Physically these normal modes represent directions of deformation that incur minimal increases in energy.(missing reference) The squared frequency of each mode determines the curvature of energy increase along that mode, meaning lower frequency modes are more accessible by thermal fluctutaions. NMA results only hold in the limit of small fluctuations, as the difference between the approximate and real potential grows with distance from the equilibrium. (Bahar et al., 2010) NMA won’t represent specific local constraints. Typically rigid or constrained elements of a molecule will not be considered in the harmonic approximation and will instead move freely. NMA is thus best used to determine large-scale dynamics independent local interactions. In fact, NMA results are primarily properties of the 3D shape of the system, not its specific interactions. (Bahar et al., 2010) . The requirement that the system be in equilibrium means that some potentials will have to undergo energy minimization prior to performing NMA. (Bauer et al., 2019) Energy minimization can be a very costly step depending on the form of the underlying potential. It can also negatively impact the accuracy of the NMA if the system doesn’t reach a precise minimum. It is then useful that some simpler models, such as the Elastic Network Models discussed in section 2.3, avoid this step since the initial conformation is explicitly the equilibrium. The mathematical formulation of NMA begins by considering a taylor series of the potential energy about the equilibrium. \\[\\begin{equation} V(\\vec{q}) = V(\\vec{q^0}) + \\sum_{i}\\Delta q_i \\frac{\\partial V}{\\partial q_i }|_{q=q^0} + 1/2 \\sum_{i,j}\\Delta q_i \\Delta q_j \\frac{\\partial^2 V}{\\partial q_i \\partial q_j }|_{q=q^0} + \\dots \\end{equation}\\] Where \\(\\vec{q}\\) is the state vector of the entire system, i.e., a 1D vector containing all system coordinates (cartesian coordinates, dihedral angles, etc.). The first and second terms of Eq. (1) are zero in any equilibrium conformation. Truncating the remaining terms gives a second-order (harmonic) approximation of the potential about the equilibrium. Defining a matrix \\(H\\), with elements \\(H_{ij}\\) being the second partial derivatives in eq. 1 allows for the energy to be calculated as a matrix-vector product. \\[\\begin{equation} H_{ij} = (\\frac{\\partial^2 V}{\\partial q_i \\partial q_j})|_{q=q^0} \\end{equation}\\] \\[\\begin{equation} V(\\Delta \\vec{q}) = \\frac{1}{2} \\Delta \\vec{q}^T \\mathbf{H} \\Delta \\vec{q} \\end{equation}\\] Where \\(\\Delta \\vec{q}\\) is the deviation from the equilibrium conformation \\(\\vec{q}^0\\). Our equation of motion may then be written using the Hessian as follows: . \\[\\begin{equation} \\mathbf{M} \\frac{d^2 \\Delta \\vec{q}}{dt^2} + \\mathbf{H} \\Delta \\vec{q} = 0 \\end{equation}\\] Where the matrix \\(\\mathbf{M}\\) is diagonal matrix containing the masses associated with each degree of freedom. By assuming solutions of the form \\(\\Delta \\vec{q_k}(t) = \\vec{v_k}(t) = \\vec{a}_{k} cos(\\omega_k t + \\delta_k)\\), where \\(\\omega_k\\) and \\(\\delta_k\\) are the frequency and phase of mode \\(k\\), and \\(\\vec{a}_{k}\\) is a vector containing the amplitudes for each coordinate. Substituting this into Eq. 4 transforms the equation of motion into a generalized eigenvalue problem, with the squared frequencies as the eigenvalues and the normal modes as the eigenvectors. \\[\\begin{equation} \\mathbf{H} \\vec{v_k} = \\omega_k^2 \\mathbf{M} \\vec{v_k} \\end{equation}\\] Calculating all eigenvectors and eigenvalues of the system would be prohibitive. It would be preferable only to calculate a significant subset. Thermodynamically, we expect motion along higher energy modes to be less likely. The contribution of an individual mode is inversely proportional to its frequency. \\[\\begin{equation} V(\\vec{v_k}) = \\frac{1}{2} \\Delta \\vec{v_k}^T \\mathbf{H} \\Delta \\vec{v_k} = \\frac{\\omega_k^2}{2} \\end{equation}\\] As such, when applying NMA, one typically calculates only the \\(n_k\\) lowest frequency modes and considers only vibration along those modes. A valuable application of NMA is determining the cross-correlations between motion in each degree of freedom. These correlations represent the statistical overlap between these motions. A high correlation means the two degrees often fluctuate together. The covariance matrix \\(\\mathbf{C}_{ij}\\) that has these cross-correlations as its entries. One can construct it from the inverse of the Hessian matrix in the following manner. \\[\\begin{equation} C_{ij} = \\langle \\Delta q_i \\Delta q_j \\rangle = k_b T * (\\mathbf{H}^{-1})_{ij} \\end{equation}\\] In the specific case of a model using cartesian coordinates, such as the Anisotropic Network model, the Hessian and its inverse are organized into \\(3 \\times 3\\) blocks for each element of the system. The mean square fluctuations of an element can then be calculated by taking the trace of its diagonal block. \\[\\begin{equation} C_{ii} = \\langle (\\Delta q_i)^2 \\rangle = k_b T * tr(\\mathbf{H}^{-1}_{ii}) \\end{equation}\\] Where in this case \\(\\mathbf{H}_{ii}\\) is a \\(3 \\times 3\\) sublock corresponding to element i. These fluctuations are the most common way of validating NMA results since they are readily comparable to Debye-Waller factors (B-factors). B-factors represent the spread of an electron density and in the case of X-rax crystallography are measured directly for each atom in a pdb. B-factors can be related to mean square fluctuations by the relation \\(B = 8 \\pi^2 \\langle \\Delta x^2 \\rangle\\). (Eyal et al., 2006) (Kaur et al., 2021) This makes for a convenient way to validate results and determine the optimal parameters in one’s choice of model. With this mathematical formulation of NMA we can now select a model with a potential to use in Eq. 1. | | . | Figure 2: An animation showing vibration along one of the normal modes | . ",
+    "url": "/cbrown_thesis_athena/2_methods/#22-normal-mode-analysis",
+    "relUrl": "/2_methods/#22-normal-mode-analysis"
+  },"6": {
+    "doc": "Methods",
+    "title": "2.3 The Anisotropic Network Model",
+    "content": "Elastic Network Models (ENMs) are among the most versatile models for describing large scale protein dynamics. They represent proteins as a network of masses connected to their neighbors by springs. They require very few parameters to fully describe the system, and are easily coarse-grained to any level depending on computational needs. We select the Anisotropic Network Model (ANM), for its ability to describe normal mode directions in 3D. This property of ANM allows applications where it is used to generate alternate conformations by deforming a molecule along the normal modes. (Eyal et al., 2015) . To simplify computations the full atomic model can be transformed into an Elastic Network by coarse graining to the level of protein residues. We select the alpha-carbon atoms as representative centroids for each protein residue. Rather than connect all residues, only residues within a cutoff distance of each other are connected with springs. This is expressed through the connectivity matrix \\(\\mathbf{\\Gamma}\\). (Eyal et al., 2006) . \\[\\begin{equation} \\Gamma_{ij} = \\biggr \\{ \\begin{array}{ll} \\gamma, &amp; R_{ij} \\leq r_c \\\\ 0, &amp; R_{ij} &gt; r_c \\end{array} \\end{equation}\\] Where \\(\\gamma\\) is the spring constant, \\(r_c\\) is the cutoff distance, and \\(R_{ij}\\) is the distance between residues i and j. The choice of spring constant typically has little impact on vibrational modes which result from the shape and connectivity of the network.(Bahar et al., 2010) . Optimal spring constants are found in the range of \\(1.0 \\pm 0.5 \\frac{kcal}{mol * Å^2}\\)(Doruker et al., 2002) and the cutoff distance is typically \\(15Å\\).(Eyal et al., 2015) Since the spring constant doesn’t significantly affect results it is typically set to exactly 1.0 to simplify calculations. Using a cuttof of \\(15Å\\) in Eq. (9) means the majority of the entries in the connectivity matrix are 0 as most capsids are significantly larger than the cutoff distance. This allows a significant simplification of computations through the use of sparse matrices. The potential of ANM can be written using the connectivity matrix and is the sum of spring potentials between each pair of connected residues. \\[\\begin{equation} V(\\vec{x}) = \\frac{1}{2} \\sum_{i|i \\neq j} \\Gamma_{ij} (||\\vec{x}_i - \\vec{x}_j|| - ||\\vec{x}^0_i - \\vec{x}^0_j||)^2 \\end{equation}\\] Where \\(\\vec{x}_i\\) is the coordinate vector of residue i and \\(\\vec{x}_i^0\\) is the equilibrium coordinate vector for that residue. This potential can be used to construct our Hessian and perform NMA on our network. | | . | Figure 3: A representation of an Elastic Network Model using the example of a Pyrococcus Furiosus VLP. (pbd: 2e0z) | . The ANM Hessian can be derived by placing our potential from Eq. (10) into Eq. (2). Because ANM uses three dimensional coordinates the Hessian of an ANM with \\(N\\) residues is a \\(3N \\times 3N\\) block matrix that consists of a \\(3 \\times 3\\) block for each residue, for a total of \\(N \\times N\\) blocks. The off-diagonal blocks have the following form. \\[\\begin{equation} \\mathbf{H}_{ij} = \\frac{\\textbf{$\\Gamma$}_{ij}}{R_{ij}^2} \\vec{r}_{ij} \\otimes \\vec{r}_{ij} \\end{equation}\\] Where \\(\\vec{r}_{ij}\\) is the distance vector between residues, \\(R_{ij}^2\\) is the distance between residues, and \\(\\otimes\\) denotes the outer product of two vectors yielding a \\(3 \\times 3\\) matrix. The diagonal blocks of our Hessian Matrix are then the sum of all other blocks in that row. \\[\\begin{equation} \\mathbf{H}_{ii} = - \\sum_{i|i \\neq j} \\mathbf{H}_{ij} \\end{equation}\\] In the case where all masses and spring constant are uniform they reduce to a scalar multiplication which can let us rewrite Equation (5) extracting the spring constant and mass from the matrices. \\[\\begin{equation} \\gamma \\mathbf{H} \\vec{v_k} = m \\omega^2 \\vec{v_k} \\end{equation}\\] As a result they can be ignored in the eigenvalue problem as they merely scale the resulting frequencies \\(\\omega^2_* = \\frac{\\gamma}{m} \\omega^2\\). A physical value for the frequencies can be extracted from a choice of mass that reflects our level of coarse-graining. When validating the results of NMA using ANM, the formula to compare with B-factors takes the following form. \\[\\begin{equation} B_i = \\frac{8 \\pi^2 k_b T }{3 \\gamma} tr(\\mathbf{H}^{-1}_{ii}) \\end{equation}\\] The pairwise correlations in Equation (6) can be used to approximate fluctuations in distance between. (missing reference) . \\[\\begin{equation} f_{ij}^2 = Var(R^{2}_{ij}) = \\mathbf{C}_{ii} + \\mathbf{C}_{jj} - 2 \\mathbf{C}_{ij} \\end{equation}\\] The Hessian matrix is, however, singular and cannot be exactly inverted, having exactly 6 zero eigenvalues. We can instead construct a pseudo-inverse from the eigenvectors/normal modes. \\[\\begin{equation} \\mathbf{H}^{-1} = \\sum_{k=1}^{3N - 6} \\frac{1}{\\omega_k^2} \\vec{v_k} \\otimes \\vec{v_k} \\end{equation}\\] | | . | Figure 4: A matrix of pairwise distance fluctuations | . Determining Optimal Spring Constant . When fitting ANM predictions to b-factors we fit a scaling factor \\(B_i = \\alpha tr(\\mathbf{H}^{-1}_{ii})\\) and then extract the value of the spring constant. \\[\\begin{equation} \\gamma = \\frac{8 \\pi^2 k_B T}{3 \\alpha} \\end{equation}\\] ",
+    "url": "/cbrown_thesis_athena/2_methods/#23-the-anisotropic-network-model",
+    "relUrl": "/2_methods/#23-the-anisotropic-network-model"
+  },"7": {
+    "doc": "Methods",
+    "title": "2.4 Quasi-Rigid Subdivisions",
+    "content": "If capsomers represent mechanical or assembly units of the capsid, we would expect them to be relatively rigid. Rigidity is thus the measure we will use to separate the residues into rigid subunits. Rigid structures have zero fluctuations in distance between any elements of the structure, but realistically there are some internal fluctuations. Thus the method aims to minimize distance fluctuations, as defined in Eq. (15), a metric called quasi-rigidity. This metric was previously used to identify rigid domains in protein structures, including viral capsids. These methods were, however, primarily targeted towards smaller protein structures. (missing reference) . Once we have used NMA to get the pairwise distance fluctuations between all residues of a capsid we need to select an algorithm or heuristic that can subdivide our network into optimally quasi-rigid subunits. There exist many algorithms to identify optimal clusterings of data, but when dealing with large, sparse datasets, Spectral Clustering is a robust and computationally efficient algorithm. Spectral Clustering . Spectral clustering has its roots in graph theory, and can be formulated as an approximation to the Normalized Graph Cut problem.(von Luxburg, 2007) An advantage that this provides over distance based clustering methods is that clusters can be arbitrary shapes. Spectral clustering is also based on similarity rather than distance, which can be useful simplify calculations. Since the similarity of distant elements approach 0, approximating them as exactly 0 allows one to use a sparse similarity matrix. To make use of the technique however, we must first transform our distance fluctuations into a graph. Specifically the Laplacian Matrix of a graph, which represents the action of the Discrete Laplace Operator on the graph. First we transform our measure of dissimilarity, distance fluctuations, into a measure of similarity using a Gaussian Weighting Function. This transformation is chosen because it emphasizes local neighborhoods of rigidity, in a similar manner to a nearest neighbor graph, and because large fluctuations approach 0 very quickly. Residues that are not connected by springs are assumed to have zero similarity in order to preserve the sparsity of the matrix and reduce memory requirements. \\[\\begin{equation} S_{i,j} = \\Gamma_{ij} e^{-f_{i,j}^2 / 2 \\bar{f}^2} \\end{equation}\\] Where \\(\\bar{f}^2\\) is the average squared distance fluctuation between connected residues. This similarity matrix can now be thought of as the adjacency matrix of a weighted graph. Spectral graph techniques require the Laplacian matrix of a graph. The Laplacian matrix represents the action of a discrete laplace operator on a graph. One can transform a similarity matrix into a Laplacian matrix, specifically the Symmetric Normalized Laplacian, with the following identity. \\[\\begin{equation} \\mathbf{L} = \\mathbf{I} - \\mathbf{D}^{-1/2} \\mathbf{S} \\mathbf{D}^{-1/2} \\end{equation}\\] Where \\(D\\) is a diagonal matrix whose entries are the number of neighbors of each node and \\(I\\) is the identity matrix. Laplacian Embedding . Finding an optimal subdivision of our graph into \\(n_c\\) clusters requires the lowest \\(n_c\\) eigenvalues and eigenvectors of the Laplacian matrix. These eigenvectors are useful because they each represent an approximate partitioning of the graph into two components. (von Luxburg, 2007) In the ideal case of well separated clusters, each of these eigenvectors would represent membership in a single cluster. In practice this is rarely ever the case, but the eigenvectors can be used to build a \\(n_c\\) dimensional space where we can use a more generic clustering algorithm such as k-means to determine cluster membership. Clustering Embedded Points . If \\(\\Lambda\\) is a matrix with the eigenvectors of the laplacian matrix as its columns, its rows now represent points in an \\(n_c\\) dimensional space. Normalizing these points and then clustering them will then yield our final set of clusters. It should not be necessary to use a sophisticated clustering scheme at this step as the spectral embedding should have done most of the work. K-means is chosen to perform the final clustering for its simplicity. ",
+    "url": "/cbrown_thesis_athena/2_methods/#24-quasi-rigid-subdivisions",
+    "relUrl": "/2_methods/#24-quasi-rigid-subdivisions"
+  },"8": {
+    "doc": "Methods",
+    "title": "2.5 Scoring &amp; Selection",
+    "content": "Since our methods take the number of clusters as input, we need to compare results across different numbers of clusters and select the optimal clustering. This requires the use of a scoring metric. We select a scoring metric that measures the compactness and separation of our clusters. This score is calculated in the eigenvector space for convenience, but the score could be applied directly to the distance fluctuations. \\[\\begin{equation} \\rho(Q) = \\frac{1}{N} \\sum_{i=1}^N \\frac{\\delta_{i,c_0}}{\\delta_{i,c_1}} \\end{equation}\\] Where \\(N\\) is the number of residues, \\(\\delta_{i,c_0}\\) is the distance between a residue and the cluster centroid it belongs to (compactness), and \\(\\delta_{i,c_1}\\) is the distance from a residue to the next nearest cluster (separation). | | . | Figure 5: Comparative plots for Pyrococcus Furiosus VLP. The first graph is the quality score from Eq. (19). The second plot is of the number of clusters that contain a unique number of residues. This is an indicator of whether clusters are uniform. | . ",
+    "url": "/cbrown_thesis_athena/2_methods/#25-scoring--selection",
+    "relUrl": "/2_methods/#25-scoring--selection"
+  },"9": {
+    "doc": "Methods",
+    "title": "2.6 Classification &amp; Visualization",
+    "content": "The labels assigned to each residue allow us to visualize the results of the clustering in ChimeraX. We color each residue based on its cluster label and then overlay a 3d structure with a lattice that fits the clustering most accurately. | | . | Figure 6: The results of visualizing Pyrococcus Furiosus VLP | . ",
+    "url": "/cbrown_thesis_athena/2_methods/#26-classification--visualization",
+    "relUrl": "/2_methods/#26-classification--visualization"
+  },"10": {
+    "doc": "Methods",
+    "title": "References",
+    "content": ". | Goldstein, H., Poole, C. P., &amp; Safko, J. L. (2001). Classical Mechanics (3rd ed.). Pearson. | Bahar, I., Lezon, T. R., Bakan, A., &amp; Shrivastava, I. H. (2010). Normal Mode Analysis of Biomolecular Structures: Functional Mechanisms of Membrane Proteins. Chemical Reviews, 110(3), 1463–1497. https://doi.org/10.1021/cr900095e | Bauer, J. A., Pavlović, J., &amp; Bauerová-Hlinková, V. (2019). Normal Mode Analysis as a Routine Part of a Structural Investigation. Molecules (Basel, Switzerland), 24(18), 3293. https://doi.org/10.3390/molecules24183293 | Eyal, E., Yang, L.-W., &amp; Bahar, I. (2006). Anisotropic network model: systematic evaluation and a new web interface. Bioinformatics, 22(21), 2619–2627. https://doi.org/10.1093/bioinformatics/btl448 | Kaur, S., Gomez-Blanco, J., Khalifa, A. A. Z., Adinarayanan, S., Sanchez-Garcia, R., Wrapp, D., McLellan, J., Bui, K. H., &amp; Vargas, J. (2021). Local computational methods to improve the interpretability and analysis of cryo-EM maps. Microscopy and Microanalysis, 27(S1), 76–78. https://doi.org/10.1017/S1431927621000891 | Eyal, E., Lum, G., &amp; Bahar, I. (2015). The anisotropic network model web server at 2015 (ANM 2.0). Bioinformatics (Oxford, England), 31(9), 1487–1489. https://doi.org/10.1093/bioinformatics/btu847 | Doruker, P., Jernigan, R. L., &amp; Bahar, I. (2002). Dynamics of large proteins through hierarchical levels of coarse-grained structures. Journal of Computational Chemistry, 23(1), 119–127. https://doi.org/https://doi.org/10.1002/jcc.1160 | von Luxburg, U. (2007). A tutorial on spectral clustering. Statistics and Computing, 17(4), 395–416. https://doi.org/10.1007/s11222-007-9033-z | . ",
+    "url": "/cbrown_thesis_athena/2_methods/#references",
+    "relUrl": "/2_methods/#references"
+  },"11": {
+    "doc": "Methods",
+    "title": "Methods",
+    "content": " ",
+    "url": "/cbrown_thesis_athena/2_methods/",
+    "relUrl": "/2_methods/"
+  },"12": {
+    "doc": "Appendix",
+    "title": "Appendix",
+    "content": " ",
+    "url": "/cbrown_thesis_athena/6_appendix/",
+    "relUrl": "/6_appendix/"
+  },"13": {
+    "doc": "Appendix",
+    "title": "A.1 Symmetry Reduction Of Matrices",
+    "content": "Knowing the icosahedral rotation matrices ahead of time can allow us to simplify the memory requirements using icosahedral symmetry. If we have our points labeled by which asymmetric unit they belong to and their position within that asymmetric unit we can calculate the distance vector between points using the following equation. \\[\\begin{equation} \\textbf{r}_{ij,kl} = I_k \\textbf{x}_{i} - I_l \\textbf{x}_{j} \\end{equation}\\] A property of symmetry groups is that products of group actions yield another member of the group. We can use this fact to express distance vectors between members of the asymmetric unit copies in terms of the distance vectors between the base unit and all others because of the following relations. \\[\\begin{equation} I_k^{-1} \\textbf{r}_{ij,kl} = I_k^{-1} I_k \\textbf{x}_{i} - I_k^{-1} I_l \\textbf{x}_{j} = \\textbf{x}_{i} - I_m \\textbf{x}_{j} = \\textbf{r}_{ij,0m} \\end{equation}\\] \\[\\begin{equation} \\textbf{r}_{ij,kl} = I_k \\textbf{r}_{ij,0m} \\end{equation}\\] Here $I_m$ is a solution to the following equation: . \\(\\begin{equation} \\textbf{I}_m = \\textbf{I}_k^{-1} \\textbf{I}_l \\end{equation}\\) We calculate the solutions to eq. 4 ahead of time using the group table calculated from the rotation matrices. The Distance matrix can be reduced without having to apply a rotation. This also applies to the connectivity matrix since it depends solely upon distance. \\[\\begin{equation} \\textbf{D}_{ij,kl} = \\textbf{D}_{ij,0m} \\end{equation}\\] The Hessian Matrix is calculated using the outer product of the distance vectors. \\[\\begin{equation} H_{ij,kl} = \\frac{\\textbf{$\\Gamma$}_{ij,kl}}{\\textbf{D}_{ij,kl}} \\textbf{r}_{ij,kl} \\otimes \\textbf{r}_{ij,kl} \\end{equation}\\] The outer product between two vectors expressed using equation (3) yields: . \\[\\begin{equation} \\textbf{r}_{ij,kl} \\otimes \\textbf{r}_{ij,kl} = I_k \\textbf{r}_{ij,0m} \\otimes \\textbf{r}_{ij,0m} I_k^{-1} \\end{equation}\\] Since all of the matrices in equation (6) can be reduced this way the final reduction for the hessian is: . \\[\\begin{equation} \\textbf{H}_{ij,kl} = I_k \\textbf{H}_{ij,0m} I_k^{-1} \\end{equation}\\] ",
+    "url": "/cbrown_thesis_athena/6_appendix/#a1-symmetry-reduction-of-matrices",
+    "relUrl": "/6_appendix/#a1-symmetry-reduction-of-matrices"
+  },"14": {
+    "doc": "Appendix",
+    "title": "References",
+    "content": ". | Luque, A., Benler, S., Lee, D. Y., Brown, C., &amp; White, S. (2020). The missing tailed phages: Prediction of small capsid candidates. Microorganisms, 8(12), 1–18. https://doi.org/10.3390/microorganisms8121944 | Lee, D. Y., Bartels, C., McNair, K., Edwards, R. A., Swairjo, M. A., &amp; Luque, A. (2022). Predicting the capsid architecture of phages from metagenomic data. Computational and Structural Biotechnology Journal, 20, 721–732. https://doi.org/https://doi.org/10.1016/j.csbj.2021.12.032 | Maurice, C. F. (2019). Considering the Other Half of the Gut Microbiome: Bacteriophages. MSystems, 4(3), e00102–19. https://doi.org/10.1128/mSystems.00102-19 | Lara, E., Vaqué, D., Sà, E. L., Boras, J. A., Gomes, A., Borrull, E., Díez-Vives, C., Teira, E., Pernice, M. C., Garcia, F. C., Forn, I., Castillo, Y. M., Peiró, A., Salazar, G., Morán, X. A. G., Massana, R., Catalá, T. S., Luna, G. M., Agustí, S., … Duarte, C. M. (2017). Unveiling the role and life strategies of viruses from the surface to the dark ocean. Science Advances, 3(9), e1602565. https://doi.org/10.1126/sciadv.1602565 | Duda, R. L., &amp; Teschke, C. M. (2019). The amazing HK97 fold: versatile results of modest differences. Current Opinion in Virology, 36, 9–16. https://doi.org/https://doi.org/10.1016/j.coviro.2019.02.001 | Suhanovsky, M. M., &amp; Teschke, C. M. (2015). Nature׳s favorite building block: Deciphering folding and capsid assembly of proteins with the HK97-fold. Virology, 479-480, 487–497. https://doi.org/https://doi.org/10.1016/j.virol.2015.02.055 | M. Iyer, L., Anantharaman, V., Krishnan, A., Burroughs, A. M., &amp; Aravind, L. (2021). Jumbo Phages: A Comparative Genomic Overview of Core Functions and Adaptions for Biological Conflicts. Viruses, 13(1). https://doi.org/10.3390/v13010063 | Yu, S. X., &amp; Shi, J. (2003). Multiclass spectral clustering. Proceedings Ninth IEEE International Conference on Computer Vision, 313–319 vol.1. | Zardecki, C., Dutta, S., Goodsell, D. S., Lowe, R., Voigt, M., &amp; Burley, S. K. (2022). PDB-101: Educational resources supporting molecular explorations through biology and medicine. Protein Science, 31(1), 129–140. https://doi.org/https://doi.org/10.1002/pro.4200 | Kaur, S., Gomez-Blanco, J., Khalifa, A. A. Z., Adinarayanan, S., Sanchez-Garcia, R., Wrapp, D., McLellan, J., Bui, K. H., &amp; Vargas, J. (2021). Local computational methods to improve the interpretability and analysis of cryo-EM maps. Microscopy and Microanalysis, 27(S1), 76–78. https://doi.org/10.1017/S1431927621000891 | Prasad, B. V. V., &amp; Schmid, M. F. (2012). Principles of virus structural organization. Advances in Experimental Medicine and Biology, 726, 17–47. https://doi.org/10.1007/978-1-4614-0980-9_3 | Šiber, A. (2020). Icosadeltahedral Geometry of Geodesic Domes, Fullerenes and Viruses: A Tutorial on the T-Number. Symmetry, 12(4). https://doi.org/10.3390/sym12040556 | Twarock, R., &amp; Luque, A. (2019). Structural puzzles in virology solved with an overarching icosahedral design principle. Nature Communications, 10(1), 1–9. https://doi.org/10.1038/s41467-019-12367-3 | Stubbs, G. (2003). Structure of the Herpesvirus Major Capsid Protein. Chemtracts, 16(10), 614–619. | Fejer, S. N., Chakrabarti, D., &amp; Wales, D. J. (2010). Emergent complexity from simple anisotropic building blocks: Shells, tubes, and spirals. ACS Nano, 4(1), 219–228. https://doi.org/10.1021/nn9013565 | Wilson, D. P. (2020). Unveiling the hidden rules of spherical viruses using point arrays. Viruses, 12(4), 1–33. https://doi.org/10.3390/v12040467 | Zandi, R., Dragnea, B., Travesset, A., &amp; Podgornik, R. (2020). On virus growth and form. Physics Reports, 847, 1–102. https://doi.org/10.1016/j.physrep.2019.12.005 | Whitford, P. C., Jiang, W., &amp; Serwer, P. (2020). Simulations of Phage T7 Capsid Expansion Reveal the Role of Molecular Sterics on Dynamics. Viruses, 12(11). https://doi.org/10.3390/v12111273 | Hagan, M. F. (2014). Modeling Viral Capsid Assembly. Advances in Chemical Physics, 155, 1–68. https://doi.org/10.1002/9781118755815.ch01 | Paramonov, L., &amp; Yaliraki, S. N. (2005). The directional contact distance of two ellipsoids: Coarse-grained potentials for anisotropic interactions. Journal of Chemical Physics, 123(19). https://doi.org/10.1063/1.2102897 | Mendoza, C. I., &amp; Reguera, D. (2020). Shape selection and mis-assembly in viral capsid formation by elastic frustration. ELife, 9, 1–22. https://doi.org/10.7554/eLife.52525 | Fejer, S. N. (2020). Minimalistic coarse-grained modeling of viral capsid assembly. In Progress in Molecular Biology and Translational Science (1st ed., Vol. 170, pp. 405–434). Elsevier Inc. https://doi.org/10.1016/bs.pmbts.2019.12.003 | Duda, R. L., &amp; Teschke, C. M. (2019). The amazing HK97 fold: versatile results of modest differences. Current Opinion in Virology, 36, 9–16. https://doi.org/10.1016/j.coviro.2019.02.001 | Aznar, M., &amp; Reguera, D. (2016). Physical Ingredients Controlling Stability and Structural Selection of Empty Viral Capsids. Journal of Physical Chemistry B, 120(26), 6147–6159. https://doi.org/10.1021/acs.jpcb.6b02150 | Wargacki, A. J., Wörner, T. P., van de Waterbeemd, M., Ellis, D., Heck, A. J. R., &amp; King, N. P. (2021). Complete and cooperative in vitro assembly of computationally designed self-assembling protein nanomaterials. Nature Communications, 12(1), 1–14. https://doi.org/10.1038/s41467-021-21251-y | Li, Y., Kennedy, N. W., Li, S., Mills, C. E., Tullman-Ercek, D., &amp; Cruz, M. O. D. L. (2021). Computational and experimental approaches to controlling bacterial microcompartment assembly. 1–24. https://doi.org/10.1101/2021.01.18.427120 | Nguyen, H. D., Reddy, V. S., &amp; Brooks, C. L. (2007). Deciphering the kinetic mechanism of spontaneous self-assembly of icosahedral capsids. Nano Letters, 7(2), 338–344. https://doi.org/10.1021/nl062449h | Luque, A., Reguera, D., Morozov, A., Rudnick, J., &amp; Bruinsma, R. (2012). Physics of shell assembly: Line tension, hole implosion, and closure catastrophe. Journal of Chemical Physics, 136(18). https://doi.org/10.1063/1.4712304 | Bruinsma, R. F., Gelbart, W. M., Reguera, D., Rudnick, J., &amp; Zandi, R. (2003). Viral Self-Assembly as a Thermodynamic Process. Physical Review Letters, 90(24), 4. https://doi.org/10.1103/PhysRevLett.90.248101 | Indelicato, G., Cermelli, P., &amp; Twarock, R. (2020). Surface stresses in complex viral capsids and non-quasi-equivalent viral architectures. Journal of the Royal Society Interface, 17(169). https://doi.org/10.1098/rsif.2020.0455rsif20200455 | Zandi, R., &amp; Reguera, D. (2005). Mechanical properties of viral capsids. Physical Review E - Statistical, Nonlinear, and Soft Matter Physics, 72(2), 1–12. https://doi.org/10.1103/PhysRevE.72.021917 | Allen, M. P., &amp; Tildesley, D. J. (1987). Allen,Tildesley,_Computer_Simulation_of_Liquids,1991.pdf. | Polles, G., Indelicato, G., Potestio, R., Cermelli, P., Twarock, R., &amp; Micheletti, C. (2013). Mechanical and Assembly Units of Viral Capsids Identified via Quasi-Rigid Domain Decomposition. PLOS Computational Biology, 9(11), 1–13. https://doi.org/10.1371/journal.pcbi.1003331 | Ponzoni, L., Polles, G., Carnevale, V., &amp; Micheletti, C. (2015). SPECTRUS: A Dimensionality Reduction Approach for Identifying Dynamical Domains in Protein Complexes from Limited Structural Datasets. Structure, 23(8), 1516–1525. https://doi.org/10.1016/j.str.2015.05.022 | Eyal, E., Yang, L.-W., &amp; Bahar, I. (2006). Anisotropic network model: systematic evaluation and a new web interface. Bioinformatics, 22(21), 2619–2627. https://doi.org/10.1093/bioinformatics/btl448 | Goldstein, H., Poole, C. P., &amp; Safko, J. L. (2001). Classical Mechanics (3rd ed.). Pearson. | Bahar, I., Lezon, T. R., Bakan, A., &amp; Shrivastava, I. H. (2010). Normal Mode Analysis of Biomolecular Structures: Functional Mechanisms of Membrane Proteins. Chemical Reviews, 110(3), 1463–1497. https://doi.org/10.1021/cr900095e | Bauer, J. A., Pavlović, J., &amp; Bauerová-Hlinková, V. (2019). Normal Mode Analysis as a Routine Part of a Structural Investigation. Molecules (Basel, Switzerland), 24(18), 3293. https://doi.org/10.3390/molecules24183293 | von Luxburg, U. (2007). A tutorial on spectral clustering. Statistics and Computing, 17(4), 395–416. https://doi.org/10.1007/s11222-007-9033-z | Doruker, P., Jernigan, R. L., &amp; Bahar, I. (2002). Dynamics of large proteins through hierarchical levels of coarse-grained structures. Journal of Computational Chemistry, 23(1), 119–127. https://doi.org/https://doi.org/10.1002/jcc.1160 | Atilgan, A. R., Durell, S. R., Jernigan, R. L., Demirel, M. C., Keskin, O., &amp; Bahar, I. (2001). Anisotropy of Fluctuation Dynamics of Proteins with an Elastic Network Model. Biophysical Journal, 80(1), 505–515. https://doi.org/https://doi.org/10.1016/S0006-3495(01)76033-X | Eyal, E., Lum, G., &amp; Bahar, I. (2015). The anisotropic network model web server at 2015 (ANM 2.0). Bioinformatics (Oxford, England), 31(9), 1487–1489. https://doi.org/10.1093/bioinformatics/btu847 | Chung, F. R. K. (1996). Spectral Graph Theory. American Mathematical Society. | Luque, A. (2011). Structure, Mechanical Properties, and Self-Assembly of Viral Capsids. http://www.tdx.cat/handle/10803/31993 | Aznar, M., Luque, A., &amp; Reguera, D. (2012). Relevance of capsid structure in the buckling and maturation of spherical viruses. Physical Biology, 9(3). https://doi.org/10.1088/1478-3975/9/3/036003 | Zandi, R., Reguera, D., Bruinsma, R. F., Gelbart, W. M., &amp; Rudnick, J. (2004). Origin of icosahedral symmetry in viruses. Proceedings of the National Academy of Sciences of the United States of America, 101(44), 15556–15560. https://doi.org/10.1073/pnas.0405844101 | HAGAN, M. F. (2014). Modeling Viral Capsid Assembly. In Advances in Chemical Physics: Volume 155 (pp. 1–68). John Wiley &amp; Sons, Ltd. https://doi.org/https://doi.org/10.1002/9781118755815.ch01 | . ",
+    "url": "/cbrown_thesis_athena/6_appendix/#references",
+    "relUrl": "/6_appendix/#references"
+  },"15": {
+    "doc": "Plots",
+    "title": "Plots",
+    "content": " ",
+    "url": "/cbrown_thesis_athena/4_output/Plots/",
+    "relUrl": "/4_output/Plots/"
+  },"16": {
+    "doc": "Plots",
+    "title": "1a34",
+    "content": ". ",
+    "url": "/cbrown_thesis_athena/4_output/Plots/#1a34",
+    "relUrl": "/4_output/Plots/#1a34"
+  },"17": {
+    "doc": "Plots",
+    "title": "2e0z",
+    "content": ". ",
+    "url": "/cbrown_thesis_athena/4_output/Plots/#2e0z",
+    "relUrl": "/4_output/Plots/#2e0z"
+  },"18": {
+    "doc": "Plots",
+    "title": "3dkt",
+    "content": ". ",
+    "url": "/cbrown_thesis_athena/4_output/Plots/#3dkt",
+    "relUrl": "/4_output/Plots/#3dkt"
+  },"19": {
+    "doc": "Plots",
+    "title": "3j0b",
+    "content": ". ",
+    "url": "/cbrown_thesis_athena/4_output/Plots/#3j0b",
+    "relUrl": "/4_output/Plots/#3j0b"
+  },"20": {
+    "doc": "Plots",
+    "title": "3J4U",
+    "content": ". ",
+    "url": "/cbrown_thesis_athena/4_output/Plots/#3j4u",
+    "relUrl": "/4_output/Plots/#3j4u"
+  },"21": {
+    "doc": "Plots",
+    "title": "3j7v",
+    "content": ". ",
+    "url": "/cbrown_thesis_athena/4_output/Plots/#3j7v",
+    "relUrl": "/4_output/Plots/#3j7v"
+  },"22": {
+    "doc": "Plots",
+    "title": "5uu5",
+    "content": ". ",
+    "url": "/cbrown_thesis_athena/4_output/Plots/#5uu5",
+    "relUrl": "/4_output/Plots/#5uu5"
+  },"23": {
+    "doc": "Plots",
+    "title": "6nj8",
+    "content": ". ",
+    "url": "/cbrown_thesis_athena/4_output/Plots/#6nj8",
+    "relUrl": "/4_output/Plots/#6nj8"
+  },"24": {
+    "doc": "Subdivisions",
+    "title": "Subdivisions",
+    "content": " ",
+    "url": "/cbrown_thesis_athena/4_output/Subdivisions/",
+    "relUrl": "/4_output/Subdivisions/"
+  },"25": {
+    "doc": "Subdivisions",
+    "title": "Snapshots",
+    "content": "1a34 . 2e0z . 3dkt . 3j7v . 5uu5 . 6nj8 . 6xgq . ",
+    "url": "/cbrown_thesis_athena/4_output/Subdivisions/#snapshots",
+    "relUrl": "/4_output/Subdivisions/#snapshots"
+  },"26": {
+    "doc": "Subdivisions",
+    "title": "PDBs",
+    "content": "2e0z_32_domains.pdb . 3dkt_60_domains.pdb . 3J4U_210_domains.pdb . ",
+    "url": "/cbrown_thesis_athena/4_output/Subdivisions/#pdbs",
+    "relUrl": "/4_output/Subdivisions/#pdbs"
+  },"27": {
+    "doc": "Output",
+    "title": "Output",
+    "content": "This contains the finalized PDB files, plots, snapshots, and presentations I’ve given to share my results. Files are formatted as follows: . ",
+    "url": "/cbrown_thesis_athena/4_output/",
+    "relUrl": "/4_output/"
+  },"28": {
+    "doc": "Output",
+    "title": "PDBs",
+    "content": "Files named: ‘[pdb_id]_[n]_domains.pdb’ contain the results of the Domain Subdivision for n domains. The labels of the domains are assigned to the b-factor values of the pdb for convenient visualization. ",
+    "url": "/cbrown_thesis_athena/4_output/#pdbs",
+    "relUrl": "/4_output/#pdbs"
+  },"29": {
+    "doc": "Output",
+    "title": "Plots",
+    "content": "Files named: ‘[pdb_id]_[n]_domains.png’ are plots of the scores of each attempted subdivision for each pdb id. The n in this case will be that of the highest scoring subdivision. ",
+    "url": "/cbrown_thesis_athena/4_output/#plots",
+    "relUrl": "/4_output/#plots"
+  },"30": {
+    "doc": "Output",
+    "title": "Final Clustering",
+    "content": "Files named: ‘[pdb_id]_[n]_domains_optimal.png’ are snapshots of the highest scoring subdivision of the pdb visualized in ChimeraX. An Icosahedral structure is overlaid to indicate the choice of subdivision. The ChimeraX sessions used to create these screenshots are saved under Subdivisions/Sessions with the format: ‘[pdb_id]_[n]_domains.cxs’ . ",
+    "url": "/cbrown_thesis_athena/4_output/#final-clustering",
+    "relUrl": "/4_output/#final-clustering"
+  },"31": {
+    "doc": "Output",
+    "title": "Summary Of HK97 Results",
+    "content": " ",
+    "url": "/cbrown_thesis_athena/4_output/#summary-of-hk97-results",
+    "relUrl": "/4_output/#summary-of-hk97-results"
+  },"32": {
+    "doc": "Discussion",
+    "title": "Discussion",
+    "content": " ",
+    "url": "/cbrown_thesis_athena/3_discussion/",
+    "relUrl": "/3_discussion/"
+  },"33": {
+    "doc": "Introduction",
+    "title": "Introduction",
+    "content": "Tailed phages are among the most abundant and diverse organisms in the ecosystem. They regulate bacterial communities and thus play an essential role in systems from the human gut biome (Maurice, 2019) to the global carbon cycle (Lara et al., 2017). The genome lengths of tailed phages range from 5 to 550 kilobase pairs (kbp)(M. Iyer et al., 2021)(Lee et al., 2022), which is key to why they have such diverse roles across ecosystems (Luque et al., 2020). This wide range of genomes lengths necessitates diversity in the size of the protein shells, called capsids, that contain these genomes(Lee et al., 2022). Indeed, capsids of tailed phages range from 30 to 180 nanometers (nm) in diameter(Duda &amp; Teschke, 2019). Despite the diversity in size, tailed phages use only variants of a single type of protein fold, the HK97 fold(Duda &amp; Teschke, 2019) (Suhanovsky &amp; Teschke, 2015). The ubiquity of this fold, and the variety of architectures it displays, suggests that its versatility helps tailed phages evolve to fill many different roles(Duda &amp; Teschke, 2019). The HK97 fold is also not exclusive to tailed phages and is also found in some cellular nanocompartments called encapsulins(Suhanovsky &amp; Teschke, 2015). The majority (80-90%) of tailed phages form icosahedrally symmetric capsids (Luque et al., 2020). This highly symmetric architecture is favorable for viruses because it reduces the genome space required to encode capsid proteins(Twarock &amp; Luque, 2019). Icosahedral symmetry is the most common type of symmetry seen in viral capsids. However, tailed phages stand out for how they build capsids with larger genomes and more complex architectures than similar families of icosahedral viruses(Luque et al., 2020). Generalized theories of icosahedral capsid geometry describe several possible lattices capsids can adopt(Twarock &amp; Luque, 2019). Each 2D lattice represents a different way that the Major Capsid Proteins (MCPs), and sometimes minor Capsid Proteins (mCPs), can form into locally symmetric groups called capsomers. The triangulation number, or T-number, determines the total number of proteins, and thus the total number of capsomers, used to build a capsid. A total of \\(60T_0\\) MCPs are needed to build a complete capsid(Prasad &amp; Schmid, 2012). | | . | Figure 1: PLACEHOLDER FOR GEOMETRIC FIGURE | . These geometric theories have proven useful in analyzing and classifying viral capsids. The T-number effectively predicts capsid and genome sizes in tailed phages and other viral families(Lee et al., 2022), but the lattice’s meaning is harder to interpret. Strictly speaking, the polygons represent locally symmetric groups of proteins(Šiber, 2020), but coarse-grained models of capsid assembly and dynamics often treat capsomers as rigid mechanical subunits(HAGAN, 2014)(Aznar et al., 2012). Identifying the rigid subunits of HK97-fold capsids can help explain how they achieve their versatility, and whether geometric theories can effectively predict such rigid subunits. HK97 fold capsids generally use pentamers and (asymmetric) hexamers as their procapsid assembly units(Duda &amp; Teschke, 2019), but maturation mechanisms can differ significantly between capsids(Suhanovsky &amp; Teschke, 2015), so they are not necessarily the rigid subunits of the mature capsid. Inter-capsomer interactions in domains unique to one particular fold often regulate assembly, and the maturation process results in significant conformational changes in the proteins(Duda &amp; Teschke, 2019). We aim to identify rigid subunits of mature capsids using HK97-like folds and determine how their unique inter-capsomer interactions affect their rigidity. Identifying the rigid subunits of viral capsids often require sophisticated experimental or computational techniques that are not suited to systematic application(Polles et al., 2013). We implement a general-purpose technique developed by (Polles et al., 2013) for identifying quasi-rigid subunits called Quasi-Rigid Domain Decomposition. This technique has two main features: the determination of capsid dynamics through Normal Mode Analysis using a coarse-grained Elastic Network Model, and the subdivision of the capsid into quasi-rigid domains using clustering methods(Ponzoni et al., 2015). We apply the method to encapsulins and capsids with T numbers from 1 to 13, ranging in diameter from 20nm to 90nm. We then determine the overlap between these subunits and the capsomers predicted by geometric theory, and attempt to determine how the unique inter-capsomer interactions of each capsid impact their rigid subunits. ",
+    "url": "/cbrown_thesis_athena/1_introduction/#introduction",
+    "relUrl": "/1_introduction/#introduction"
+  },"34": {
+    "doc": "Introduction",
+    "title": "References",
+    "content": ". | Maurice, C. F. (2019). Considering the Other Half of the Gut Microbiome: Bacteriophages. MSystems, 4(3), e00102–19. https://doi.org/10.1128/mSystems.00102-19 | Lara, E., Vaqué, D., Sà, E. L., Boras, J. A., Gomes, A., Borrull, E., Díez-Vives, C., Teira, E., Pernice, M. C., Garcia, F. C., Forn, I., Castillo, Y. M., Peiró, A., Salazar, G., Morán, X. A. G., Massana, R., Catalá, T. S., Luna, G. M., Agustí, S., … Duarte, C. M. (2017). Unveiling the role and life strategies of viruses from the surface to the dark ocean. Science Advances, 3(9), e1602565. https://doi.org/10.1126/sciadv.1602565 | M. Iyer, L., Anantharaman, V., Krishnan, A., Burroughs, A. M., &amp; Aravind, L. (2021). Jumbo Phages: A Comparative Genomic Overview of Core Functions and Adaptions for Biological Conflicts. Viruses, 13(1). https://doi.org/10.3390/v13010063 | Lee, D. Y., Bartels, C., McNair, K., Edwards, R. A., Swairjo, M. A., &amp; Luque, A. (2022). Predicting the capsid architecture of phages from metagenomic data. Computational and Structural Biotechnology Journal, 20, 721–732. https://doi.org/https://doi.org/10.1016/j.csbj.2021.12.032 | Luque, A., Benler, S., Lee, D. Y., Brown, C., &amp; White, S. (2020). The missing tailed phages: Prediction of small capsid candidates. Microorganisms, 8(12), 1–18. https://doi.org/10.3390/microorganisms8121944 | Duda, R. L., &amp; Teschke, C. M. (2019). The amazing HK97 fold: versatile results of modest differences. Current Opinion in Virology, 36, 9–16. https://doi.org/https://doi.org/10.1016/j.coviro.2019.02.001 | Suhanovsky, M. M., &amp; Teschke, C. M. (2015). Nature׳s favorite building block: Deciphering folding and capsid assembly of proteins with the HK97-fold. Virology, 479-480, 487–497. https://doi.org/https://doi.org/10.1016/j.virol.2015.02.055 | Twarock, R., &amp; Luque, A. (2019). Structural puzzles in virology solved with an overarching icosahedral design principle. Nature Communications, 10(1), 1–9. https://doi.org/10.1038/s41467-019-12367-3 | Prasad, B. V. V., &amp; Schmid, M. F. (2012). Principles of virus structural organization. Advances in Experimental Medicine and Biology, 726, 17–47. https://doi.org/10.1007/978-1-4614-0980-9_3 | Šiber, A. (2020). Icosadeltahedral Geometry of Geodesic Domes, Fullerenes and Viruses: A Tutorial on the T-Number. Symmetry, 12(4). https://doi.org/10.3390/sym12040556 | HAGAN, M. F. (2014). Modeling Viral Capsid Assembly. In Advances in Chemical Physics: Volume 155 (pp. 1–68). John Wiley &amp; Sons, Ltd. https://doi.org/https://doi.org/10.1002/9781118755815.ch01 | Aznar, M., Luque, A., &amp; Reguera, D. (2012). Relevance of capsid structure in the buckling and maturation of spherical viruses. Physical Biology, 9(3). https://doi.org/10.1088/1478-3975/9/3/036003 | Polles, G., Indelicato, G., Potestio, R., Cermelli, P., Twarock, R., &amp; Micheletti, C. (2013). Mechanical and Assembly Units of Viral Capsids Identified via Quasi-Rigid Domain Decomposition. PLOS Computational Biology, 9(11), 1–13. https://doi.org/10.1371/journal.pcbi.1003331 | Ponzoni, L., Polles, G., Carnevale, V., &amp; Micheletti, C. (2015). SPECTRUS: A Dimensionality Reduction Approach for Identifying Dynamical Domains in Protein Complexes from Limited Structural Datasets. Structure, 23(8), 1516–1525. https://doi.org/10.1016/j.str.2015.05.022 | . ",
+    "url": "/cbrown_thesis_athena/1_introduction/#references",
+    "relUrl": "/1_introduction/#references"
+  },"35": {
+    "doc": "Introduction",
+    "title": "Introduction",
+    "content": " ",
+    "url": "/cbrown_thesis_athena/1_introduction/",
+    "relUrl": "/1_introduction/"
+  },"36": {
+    "doc": "Home",
+    "title": "Home",
+    "content": "My name is Colin Brown, an MS student in Physics at San Diego State University. This page contains a record of my contributions to Luque Lab and the ongoing development of my Master’s Thesis. I primarily analyze the structural and geometric properties of viral capsids with coarse grained physical models. ",
+    "url": "/cbrown_thesis_athena/",
+    "relUrl": "/"
+  },"37": {
+    "doc": "Home",
+    "title": "Ongoing Projects",
+    "content": " ",
+    "url": "/cbrown_thesis_athena/#ongoing-projects",
+    "relUrl": "/#ongoing-projects"
+  },"38": {
+    "doc": "Home",
+    "title": "Classifying Viral Capsids via Quasi-Rigid Domain Decomposition",
+    "content": ". I am developing a tool based on the work in Ponzoni &amp; Polles 2015 that uses Normal Mode Analysis and Elastic Network Models to decompose a protein structure into its quasi-rigid subunits. I am applying this tool to capsids and using the results to assist in the classification of capsids using the scheme described in Twarock &amp; Luque(2019). The details of this method are included in Chapter 4 of my thesis and the project is located in a Github Repository. ",
+    "url": "/cbrown_thesis_athena/#classifying-viral-capsids-via-quasi-rigid-domain-decomposition",
+    "relUrl": "/#classifying-viral-capsids-via-quasi-rigid-domain-decomposition"
+  },"39": {
+    "doc": "Home",
+    "title": "Catalogue Of Capsid Classifications",
+    "content": ". I am part of a group effort in Luque Lab to create a catalogue of classifications of Viral Capsids based on their geometry. This project is ongoing at this Github Repository. ",
+    "url": "/cbrown_thesis_athena/#catalogue-of-capsid-classifications",
+    "relUrl": "/#catalogue-of-capsid-classifications"
+  },"40": {
+    "doc": "Home",
+    "title": "Completed Projects",
+    "content": " ",
+    "url": "/cbrown_thesis_athena/#completed-projects",
+    "relUrl": "/#completed-projects"
+  },"41": {
+    "doc": "Home",
+    "title": "ChimeraX hkcage",
+    "content": ". I developed a tool for the free molecular visualization software ChimeraX. The tool was an extension of the ‘hkcage’ tool already present in ChimeraX to generate Geodesic &amp; Goldberg Polyhedra to a set of new geometries described in Twarock &amp; Luque(2019). This tool is now part of the official ChimeraX Toolshed. (ChimeraX Documentation.) The tool is also being developed and documented in a Github Repository. ",
+    "url": "/cbrown_thesis_athena/#chimerax-hkcage",
+    "relUrl": "/#chimerax-hkcage"
+  },"42": {
+    "doc": "Home",
+    "title": "Coarse Grained Models Of Viral Capsids",
+    "content": ". I created coarse grained toy models of capsids based on those used in Zandi &amp; Reguera 2004 for the purpose of comparing standard hexagonal capsid structures with trihexagonal capsid structures. ",
+    "url": "/cbrown_thesis_athena/#coarse-grained-models-of-viral-capsids",
+    "relUrl": "/#coarse-grained-models-of-viral-capsids"
+  }
+}
